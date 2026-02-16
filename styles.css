@@ -1,0 +1,388 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --dem-color: #2166ac;
+  --dem-light: #4393c3;
+  --rep-color: #b2182b;
+  --rep-light: #d6604d;
+  --tossup-color: #8c6d31;
+  --bg-primary: #0f1117;
+  --bg-secondary: #1a1d27;
+  --bg-card: #21242f;
+  --bg-hover: #2a2d3a;
+  --text-primary: #e8eaed;
+  --text-secondary: #9aa0a6;
+  --border-color: #333744;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  min-height: 100vh;
+}
+
+header {
+  background: var(--bg-secondary);
+  border-bottom: 1px solid var(--border-color);
+  padding: 1.5rem 2rem;
+}
+
+.header-content {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+header h1 {
+  font-size: 1.75rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.subtitle {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  margin-top: 0.25rem;
+}
+
+.controls {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1.25rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.tab-group {
+  display: flex;
+  background: var(--bg-secondary);
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid var(--border-color);
+}
+
+.tab {
+  padding: 0.6rem 1.5rem;
+  border: none;
+  background: transparent;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.tab.active {
+  background: var(--bg-hover);
+  color: var(--text-primary);
+}
+
+.tab:hover:not(.active) {
+  color: var(--text-primary);
+}
+
+.filters {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.filters select {
+  padding: 0.6rem 1rem;
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  font-size: 0.85rem;
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%239aa0a6' viewBox='0 0 16 16'%3E%3Cpath d='M8 11L3 6h10z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+  padding-right: 2rem;
+}
+
+.filters select:focus {
+  outline: none;
+  border-color: var(--dem-light);
+}
+
+main {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem 2rem;
+}
+
+/* Summary bar */
+.summary-bar {
+  display: flex;
+  gap: 0.75rem;
+  margin-bottom: 1.25rem;
+  flex-wrap: wrap;
+}
+
+.summary-card {
+  flex: 1;
+  min-width: 100px;
+  padding: 1rem;
+  border-radius: 8px;
+  text-align: center;
+  border: 1px solid var(--border-color);
+  background: var(--bg-secondary);
+}
+
+.summary-card.dem { border-left: 4px solid var(--dem-color); }
+.summary-card.lean-dem { border-left: 4px solid var(--dem-light); }
+.summary-card.tossup { border-left: 4px solid var(--tossup-color); }
+.summary-card.lean-rep { border-left: 4px solid var(--rep-light); }
+.summary-card.rep { border-left: 4px solid var(--rep-color); }
+
+.summary-label {
+  display: block;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-secondary);
+  margin-bottom: 0.25rem;
+}
+
+.summary-count {
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+/* Seat projection bar */
+.seat-bar-container {
+  margin-bottom: 1.5rem;
+}
+
+.seat-bar {
+  display: flex;
+  height: 32px;
+  border-radius: 6px;
+  overflow: hidden;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+}
+
+.seat-bar .segment {
+  transition: width 0.4s ease;
+  position: relative;
+}
+
+.seat-bar .segment.solid-d { background: var(--dem-color); }
+.seat-bar .segment.lean-d { background: var(--dem-light); }
+.seat-bar .segment.tossup-seg { background: var(--tossup-color); }
+.seat-bar .segment.lean-r { background: var(--rep-light); }
+.seat-bar .segment.solid-r { background: var(--rep-color); }
+
+.seat-bar-labels {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 0.4rem;
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+}
+
+.majority-label {
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.dem-label { color: var(--dem-light); font-weight: 600; }
+.rep-label { color: var(--rep-light); font-weight: 600; }
+
+/* Race cards */
+.races-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+  gap: 1rem;
+}
+
+.race-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  padding: 1.25rem;
+  transition: border-color 0.2s, transform 0.15s;
+  cursor: default;
+}
+
+.race-card:hover {
+  border-color: #555;
+  transform: translateY(-1px);
+}
+
+.race-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.race-title {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.race-title .state-abbr {
+  color: var(--text-secondary);
+  font-weight: 400;
+  margin-left: 0.25rem;
+}
+
+.race-rating {
+  font-size: 0.7rem;
+  padding: 0.25rem 0.6rem;
+  border-radius: 20px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.race-rating.solid-d { background: var(--dem-color); color: #fff; }
+.race-rating.lean-d { background: var(--dem-light); color: #fff; }
+.race-rating.tossup { background: var(--tossup-color); color: #fff; }
+.race-rating.lean-r { background: var(--rep-light); color: #fff; }
+.race-rating.solid-r { background: var(--rep-color); color: #fff; }
+
+.candidates {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  margin-bottom: 1rem;
+}
+
+.candidate-row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.candidate-party {
+  width: 4px;
+  height: 28px;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+.candidate-party.dem { background: var(--dem-color); }
+.candidate-party.rep { background: var(--rep-color); }
+.candidate-party.ind { background: #6a9955; }
+
+.candidate-info {
+  flex: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.candidate-name {
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.candidate-name .party-label {
+  color: var(--text-secondary);
+  font-weight: 400;
+  font-size: 0.8rem;
+}
+
+.candidate-pct {
+  font-size: 1rem;
+  font-weight: 700;
+  min-width: 45px;
+  text-align: right;
+}
+
+.candidate-pct.leading { color: #66bb6a; }
+
+/* Poll bar visualization */
+.poll-bar-container {
+  height: 8px;
+  background: var(--bg-primary);
+  border-radius: 4px;
+  overflow: hidden;
+  display: flex;
+  margin-bottom: 0.75rem;
+}
+
+.poll-bar-dem {
+  background: var(--dem-color);
+  transition: width 0.4s ease;
+}
+
+.poll-bar-rep {
+  background: var(--rep-color);
+  transition: width 0.4s ease;
+}
+
+.race-meta {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+}
+
+.margin-text {
+  font-weight: 600;
+}
+
+.margin-text.dem-leading { color: var(--dem-light); }
+.margin-text.rep-leading { color: var(--rep-light); }
+.margin-text.tied { color: var(--tossup-color); }
+
+/* Trend indicator */
+.trend {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.2rem;
+}
+
+.trend-arrow {
+  font-size: 0.7rem;
+}
+
+.trend-arrow.up { color: #66bb6a; }
+.trend-arrow.down { color: #ef5350; }
+.trend-arrow.flat { color: var(--text-secondary); }
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 2rem;
+  color: var(--text-secondary);
+  font-size: 0.8rem;
+  border-top: 1px solid var(--border-color);
+  margin-top: 2rem;
+}
+
+/* No results */
+.no-results {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 3rem;
+  color: var(--text-secondary);
+  font-size: 1rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  header { padding: 1rem; }
+  .controls { padding: 1rem; flex-direction: column; align-items: stretch; }
+  .tab-group { justify-content: center; }
+  .filters { justify-content: center; }
+  main { padding: 0 1rem 1rem; }
+  .races-container { grid-template-columns: 1fr; }
+  .summary-bar { gap: 0.5rem; }
+  .summary-card { min-width: 60px; padding: 0.75rem 0.5rem; }
+  .summary-count { font-size: 1.25rem; }
+}

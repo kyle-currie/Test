@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Polling Tracker - House &amp; Senate Races</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <div class="header-content">
+      <h1>Polling Tracker</h1>
+      <p class="subtitle">U.S. House &amp; Senate Race Polling</p>
+    </div>
+  </header>
+
+  <nav class="controls">
+    <div class="tab-group">
+      <button class="tab active" data-chamber="senate">Senate</button>
+      <button class="tab" data-chamber="house">House</button>
+    </div>
+    <div class="filters">
+      <select id="state-filter">
+        <option value="all">All States</option>
+      </select>
+      <select id="rating-filter">
+        <option value="all">All Ratings</option>
+        <option value="solid-d">Solid D</option>
+        <option value="lean-d">Lean D</option>
+        <option value="tossup">Tossup</option>
+        <option value="lean-r">Lean R</option>
+        <option value="solid-r">Solid R</option>
+      </select>
+      <select id="sort-filter">
+        <option value="state">Sort by State</option>
+        <option value="margin">Sort by Margin</option>
+        <option value="recent">Sort by Most Recent</option>
+      </select>
+    </div>
+  </nav>
+
+  <main>
+    <section class="summary-bar">
+      <div class="summary-card dem">
+        <span class="summary-label">Dem</span>
+        <span class="summary-count" id="dem-count">0</span>
+      </div>
+      <div class="summary-card lean-dem">
+        <span class="summary-label">Lean D</span>
+        <span class="summary-count" id="lean-d-count">0</span>
+      </div>
+      <div class="summary-card tossup">
+        <span class="summary-label">Tossup</span>
+        <span class="summary-count" id="tossup-count">0</span>
+      </div>
+      <div class="summary-card lean-rep">
+        <span class="summary-label">Lean R</span>
+        <span class="summary-count" id="lean-r-count">0</span>
+      </div>
+      <div class="summary-card rep">
+        <span class="summary-label">Rep</span>
+        <span class="summary-count" id="rep-count">0</span>
+      </div>
+    </section>
+
+    <section class="seat-bar-container">
+      <div class="seat-bar" id="seat-bar"></div>
+      <div class="seat-bar-labels">
+        <span class="dem-label">0 Dem</span>
+        <span class="majority-label" id="majority-label">Majority: 51</span>
+        <span class="rep-label">0 Rep</span>
+      </div>
+    </section>
+
+    <section class="races-container" id="races-container">
+    </section>
+  </main>
+
+  <footer>
+    <p>Polling data is simulated for demonstration purposes. Last updated: <span id="last-updated"></span></p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
