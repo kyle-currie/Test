@@ -80,6 +80,18 @@
     <p>Polling data is simulated for demonstration purposes. Last updated: <span id="last-updated"></span></p>
   </footer>
 
+  <!-- Race detail modal -->
+  <div class="modal-overlay" id="modal-overlay">
+    <div class="modal" id="race-modal">
+      <button class="modal-close" id="modal-close" aria-label="Close">&times;</button>
+      <div class="modal-header" id="modal-header"></div>
+      <div class="modal-chart-container">
+        <canvas id="trend-chart" width="600" height="280"></canvas>
+      </div>
+      <div class="modal-polls" id="modal-polls"></div>
+    </div>
+  </div>
+
   <script src="app.js"></script>
 </body>
 </html>

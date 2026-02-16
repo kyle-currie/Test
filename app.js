@@ -1,3 +1,206 @@
+// Historical polling trends for each race (keyed by abbr)
+const pollingTrends = {
+  // Senate
+  "AZ": [
+    { date: "2025-11-15", dem: 45.0, rep: 47.5, pollster: "OH Predictive" },
+    { date: "2025-12-10", dem: 45.8, rep: 47.1, pollster: "Marist College" },
+    { date: "2026-01-05", dem: 46.5, rep: 47.0, pollster: "Emerson College" },
+    { date: "2026-01-18", dem: 47.2, rep: 47.2, pollster: "Suffolk University" },
+    { date: "2026-02-01", dem: 47.8, rep: 46.9, pollster: "Siena College" },
+    { date: "2026-02-10", dem: 48.2, rep: 46.8, pollster: "Marist College" }
+  ],
+  "GA": [
+    { date: "2025-11-20", dem: 46.8, rep: 47.0, pollster: "Emerson College" },
+    { date: "2025-12-15", dem: 46.2, rep: 47.8, pollster: "AJC/UGA" },
+    { date: "2026-01-08", dem: 45.9, rep: 48.5, pollster: "Quinnipiac" },
+    { date: "2026-01-22", dem: 45.5, rep: 48.9, pollster: "Fox News" },
+    { date: "2026-02-08", dem: 45.1, rep: 49.3, pollster: "Quinnipiac" }
+  ],
+  "MI": [
+    { date: "2025-11-10", dem: 48.0, rep: 45.5, pollster: "EPIC-MRA" },
+    { date: "2025-12-05", dem: 48.8, rep: 45.2, pollster: "Glengariff Group" },
+    { date: "2026-01-10", dem: 49.3, rep: 45.0, pollster: "EPIC-MRA" },
+    { date: "2026-01-25", dem: 49.7, rep: 44.8, pollster: "Mitchell Research" },
+    { date: "2026-02-12", dem: 50.1, rep: 44.7, pollster: "EPIC-MRA" }
+  ],
+  "NV": [
+    { date: "2025-11-18", dem: 46.0, rep: 46.2, pollster: "Suffolk University" },
+    { date: "2025-12-12", dem: 46.5, rep: 46.8, pollster: "Nevada Ind. Poll" },
+    { date: "2026-01-06", dem: 46.8, rep: 47.0, pollster: "Emerson College" },
+    { date: "2026-01-20", dem: 47.0, rep: 47.2, pollster: "Mason-Dixon" },
+    { date: "2026-02-09", dem: 47.0, rep: 47.5, pollster: "Suffolk University" }
+  ],
+  "PA": [
+    { date: "2025-11-12", dem: 48.5, rep: 45.0, pollster: "Franklin & Marshall" },
+    { date: "2025-12-08", dem: 48.0, rep: 45.8, pollster: "Quinnipiac" },
+    { date: "2026-01-09", dem: 47.5, rep: 46.2, pollster: "Emerson College" },
+    { date: "2026-01-28", dem: 47.2, rep: 46.8, pollster: "Muhlenberg College" },
+    { date: "2026-02-11", dem: 46.9, rep: 47.1, pollster: "Franklin & Marshall" }
+  ],
+  "WI": [
+    { date: "2025-11-08", dem: 49.0, rep: 45.5, pollster: "Marquette Law" },
+    { date: "2025-12-06", dem: 49.5, rep: 45.0, pollster: "Marquette Law" },
+    { date: "2026-01-12", dem: 50.0, rep: 44.5, pollster: "Marquette Law" },
+    { date: "2026-01-30", dem: 50.4, rep: 44.3, pollster: "Emerson College" },
+    { date: "2026-02-13", dem: 50.8, rep: 44.2, pollster: "Marquette Law" }
+  ],
+  "OH": [
+    { date: "2025-11-15", dem: 45.0, rep: 48.0, pollster: "Emerson College" },
+    { date: "2025-12-10", dem: 44.5, rep: 49.0, pollster: "Baldwin Wallace" },
+    { date: "2026-01-07", dem: 44.0, rep: 49.5, pollster: "Quinnipiac" },
+    { date: "2026-01-25", dem: 43.8, rep: 49.9, pollster: "Emerson College" },
+    { date: "2026-02-07", dem: 43.5, rep: 50.2, pollster: "Emerson College" }
+  ],
+  "NC": [
+    { date: "2025-11-20", dem: 46.0, rep: 47.8, pollster: "PPP" },
+    { date: "2025-12-14", dem: 46.5, rep: 47.5, pollster: "Meredith College" },
+    { date: "2026-01-10", dem: 46.9, rep: 47.5, pollster: "High Point Univ" },
+    { date: "2026-01-28", dem: 47.3, rep: 47.4, pollster: "PPP" },
+    { date: "2026-02-14", dem: 47.6, rep: 47.3, pollster: "PPP" }
+  ],
+  "NH": [
+    { date: "2025-11-12", dem: 50.0, rep: 44.5, pollster: "UNH Survey Center" },
+    { date: "2025-12-08", dem: 50.5, rep: 43.8, pollster: "Saint Anselm" },
+    { date: "2026-01-06", dem: 50.9, rep: 43.2, pollster: "UNH Survey Center" },
+    { date: "2026-01-22", dem: 51.1, rep: 43.0, pollster: "Emerson College" },
+    { date: "2026-02-06", dem: 51.4, rep: 42.8, pollster: "UNH Survey Center" }
+  ],
+  "FL": [
+    { date: "2025-11-18", dem: 45.5, rep: 49.0, pollster: "Mason-Dixon" },
+    { date: "2025-12-12", dem: 45.0, rep: 49.5, pollster: "FAU BEPI" },
+    { date: "2026-01-08", dem: 44.5, rep: 50.0, pollster: "Quinnipiac" },
+    { date: "2026-01-24", dem: 44.2, rep: 50.3, pollster: "Mason-Dixon" },
+    { date: "2026-02-05", dem: 44.0, rep: 50.6, pollster: "Mason-Dixon" }
+  ],
+  "TX": [
+    { date: "2025-11-14", dem: 42.8, rep: 51.5, pollster: "UT Tyler" },
+    { date: "2025-12-09", dem: 42.2, rep: 52.0, pollster: "Quinnipiac" },
+    { date: "2026-01-06", dem: 41.8, rep: 52.8, pollster: "UT Tyler" },
+    { date: "2026-01-22", dem: 41.5, rep: 53.1, pollster: "Emerson College" },
+    { date: "2026-02-04", dem: 41.2, rep: 53.4, pollster: "UT Tyler" }
+  ],
+  "CO": [
+    { date: "2025-11-10", dem: 52.5, rep: 41.5, pollster: "Keating Research" },
+    { date: "2025-12-06", dem: 53.0, rep: 41.0, pollster: "Magellan Strategies" },
+    { date: "2026-01-09", dem: 53.5, rep: 40.5, pollster: "Emerson College" },
+    { date: "2026-01-26", dem: 53.9, rep: 40.0, pollster: "Keating Research" },
+    { date: "2026-02-03", dem: 54.2, rep: 39.8, pollster: "Keating Research" }
+  ],
+  "ME": [
+    { date: "2025-11-15", dem: 48.5, rep: 44.5, pollster: "Critical Insights" },
+    { date: "2025-12-10", dem: 49.0, rep: 44.0, pollster: "Colby College" },
+    { date: "2026-01-08", dem: 49.3, rep: 43.5, pollster: "Critical Insights" },
+    { date: "2026-01-20", dem: 49.5, rep: 43.3, pollster: "Pan Atlantic" },
+    { date: "2026-02-01", dem: 49.7, rep: 43.1, pollster: "Critical Insights" }
+  ],
+  "IA": [
+    { date: "2025-11-10", dem: 41.0, rep: 53.5, pollster: "Selzer & Co" },
+    { date: "2025-12-05", dem: 40.5, rep: 54.0, pollster: "Emerson College" },
+    { date: "2026-01-06", dem: 40.0, rep: 54.5, pollster: "Selzer & Co" },
+    { date: "2026-01-18", dem: 39.8, rep: 54.8, pollster: "Civiqs" },
+    { date: "2026-01-30", dem: 39.5, rep: 55.1, pollster: "Selzer & Co" }
+  ],
+  // House
+  "CA-45": [
+    { date: "2025-11-12", dem: 46.0, rep: 48.5, pollster: "PPIC" },
+    { date: "2025-12-08", dem: 46.8, rep: 48.0, pollster: "SurveyUSA" },
+    { date: "2026-01-10", dem: 47.5, rep: 47.8, pollster: "Emerson College" },
+    { date: "2026-01-28", dem: 48.0, rep: 47.5, pollster: "PPIC" },
+    { date: "2026-02-12", dem: 48.5, rep: 47.2, pollster: "PPIC" }
+  ],
+  "NY-19": [
+    { date: "2025-11-15", dem: 47.5, rep: 46.5, pollster: "Siena College" },
+    { date: "2025-12-10", dem: 47.2, rep: 47.0, pollster: "Emerson College" },
+    { date: "2026-01-08", dem: 47.0, rep: 47.5, pollster: "Siena College" },
+    { date: "2026-01-25", dem: 46.9, rep: 47.8, pollster: "Marist College" },
+    { date: "2026-02-10", dem: 46.8, rep: 48.1, pollster: "Siena College" }
+  ],
+  "VA-07": [
+    { date: "2025-11-10", dem: 49.5, rep: 45.5, pollster: "Roanoke College" },
+    { date: "2025-12-06", dem: 50.0, rep: 45.0, pollster: "CNU Wason" },
+    { date: "2026-01-09", dem: 50.5, rep: 44.5, pollster: "Roanoke College" },
+    { date: "2026-01-26", dem: 51.0, rep: 44.0, pollster: "Emerson College" },
+    { date: "2026-02-11", dem: 51.3, rep: 43.9, pollster: "Roanoke College" }
+  ],
+  "CO-08": [
+    { date: "2025-11-18", dem: 46.0, rep: 47.5, pollster: "Keating Research" },
+    { date: "2025-12-12", dem: 46.5, rep: 47.2, pollster: "Emerson College" },
+    { date: "2026-01-06", dem: 47.0, rep: 47.1, pollster: "Keating Research" },
+    { date: "2026-01-22", dem: 47.3, rep: 47.0, pollster: "Magellan Strategies" },
+    { date: "2026-02-09", dem: 47.6, rep: 47.0, pollster: "Keating Research" }
+  ],
+  "MI-10": [
+    { date: "2025-11-14", dem: 45.5, rep: 49.0, pollster: "EPIC-MRA" },
+    { date: "2025-12-09", dem: 45.0, rep: 49.5, pollster: "Glengariff Group" },
+    { date: "2026-01-07", dem: 44.5, rep: 50.0, pollster: "EPIC-MRA" },
+    { date: "2026-01-24", dem: 44.3, rep: 50.5, pollster: "Mitchell Research" },
+    { date: "2026-02-08", dem: 44.1, rep: 50.8, pollster: "EPIC-MRA" }
+  ],
+  "OR-05": [
+    { date: "2025-11-10", dem: 48.5, rep: 46.0, pollster: "DHM Research" },
+    { date: "2025-12-06", dem: 49.0, rep: 45.8, pollster: "Emerson College" },
+    { date: "2026-01-08", dem: 49.3, rep: 45.5, pollster: "DHM Research" },
+    { date: "2026-01-22", dem: 49.5, rep: 45.5, pollster: "SurveyUSA" },
+    { date: "2026-02-07", dem: 49.8, rep: 45.4, pollster: "DHM Research" }
+  ],
+  "KS-03": [
+    { date: "2025-11-15", dem: 47.0, rep: 47.8, pollster: "Fort Hays State" },
+    { date: "2025-12-10", dem: 47.5, rep: 47.5, pollster: "Emerson College" },
+    { date: "2026-01-06", dem: 48.0, rep: 47.2, pollster: "Fort Hays State" },
+    { date: "2026-01-20", dem: 48.5, rep: 47.0, pollster: "SurveyUSA" },
+    { date: "2026-02-06", dem: 48.9, rep: 46.7, pollster: "Fort Hays State" }
+  ],
+  "PA-07": [
+    { date: "2025-11-12", dem: 49.0, rep: 45.5, pollster: "Muhlenberg College" },
+    { date: "2025-12-08", dem: 49.5, rep: 45.0, pollster: "Franklin & Marshall" },
+    { date: "2026-01-10", dem: 50.0, rep: 44.8, pollster: "Muhlenberg College" },
+    { date: "2026-01-28", dem: 50.2, rep: 44.5, pollster: "Emerson College" },
+    { date: "2026-02-13", dem: 50.5, rep: 44.3, pollster: "Muhlenberg College" }
+  ],
+  "TX-34": [
+    { date: "2025-11-10", dem: 46.5, rep: 48.0, pollster: "UT Tyler" },
+    { date: "2025-12-05", dem: 46.0, rep: 48.5, pollster: "Emerson College" },
+    { date: "2026-01-08", dem: 45.5, rep: 49.0, pollster: "UT Tyler" },
+    { date: "2026-01-22", dem: 45.0, rep: 49.5, pollster: "SurveyUSA" },
+    { date: "2026-02-05", dem: 44.7, rep: 49.9, pollster: "UT Tyler" }
+  ],
+  "NJ-07": [
+    { date: "2025-11-14", dem: 48.0, rep: 46.5, pollster: "Monmouth University" },
+    { date: "2025-12-09", dem: 47.8, rep: 47.0, pollster: "Emerson College" },
+    { date: "2026-01-07", dem: 47.5, rep: 47.5, pollster: "Monmouth University" },
+    { date: "2026-01-24", dem: 47.4, rep: 47.8, pollster: "Quinnipiac" },
+    { date: "2026-02-14", dem: 47.3, rep: 48.0, pollster: "Monmouth University" }
+  ],
+  "OH-01": [
+    { date: "2025-11-18", dem: 42.5, rep: 51.0, pollster: "Emerson College" },
+    { date: "2025-12-12", dem: 43.0, rep: 50.8, pollster: "Baldwin Wallace" },
+    { date: "2026-01-06", dem: 43.5, rep: 50.5, pollster: "Emerson College" },
+    { date: "2026-01-20", dem: 43.8, rep: 50.3, pollster: "Quinnipiac" },
+    { date: "2026-02-04", dem: 44.0, rep: 50.1, pollster: "Emerson College" }
+  ],
+  "WA-03": [
+    { date: "2025-11-10", dem: 41.5, rep: 53.0, pollster: "Elway Research" },
+    { date: "2025-12-06", dem: 41.2, rep: 53.5, pollster: "SurveyUSA" },
+    { date: "2026-01-08", dem: 41.0, rep: 53.8, pollster: "Elway Research" },
+    { date: "2026-01-22", dem: 40.8, rep: 54.0, pollster: "Emerson College" },
+    { date: "2026-02-02", dem: 40.5, rep: 54.2, pollster: "Elway Research" }
+  ],
+  "IL-06": [
+    { date: "2025-11-14", dem: 53.5, rep: 40.5, pollster: "Paul Simon Institute" },
+    { date: "2025-12-08", dem: 54.0, rep: 40.0, pollster: "Emerson College" },
+    { date: "2026-01-10", dem: 54.5, rep: 39.5, pollster: "Paul Simon Institute" },
+    { date: "2026-01-26", dem: 55.0, rep: 39.0, pollster: "SurveyUSA" },
+    { date: "2026-02-03", dem: 55.3, rep: 38.7, pollster: "Paul Simon Institute" }
+  ],
+  "NC-13": [
+    { date: "2025-11-12", dem: 46.0, rep: 48.0, pollster: "PPP" },
+    { date: "2025-12-08", dem: 46.5, rep: 47.8, pollster: "High Point Univ" },
+    { date: "2026-01-06", dem: 47.0, rep: 47.8, pollster: "PPP" },
+    { date: "2026-01-22", dem: 47.5, rep: 47.6, pollster: "Meredith College" },
+    { date: "2026-02-11", dem: 47.8, rep: 47.5, pollster: "PPP" }
+  ]
+};
+
 // Sample polling data for Senate and House races
 const pollingData = {
   senate: [
@@ -370,7 +573,7 @@ function renderRaceCard(race) {
   const repLeading = rep.pct >= dem.pct;
 
   return `
-    <div class="race-card">
+    <div class="race-card" data-race-abbr="${race.abbr}" role="button" tabindex="0">
       <div class="race-header">
         <div class="race-title">
           ${race.state} <span class="state-abbr">${race.abbr}</span>
@@ -401,6 +604,7 @@ function renderRaceCard(race) {
         <span class="margin-text ${marginClass}">${marginText}</span>
         <span>${race.pollster} &middot; n=${race.sampleSize} &middot; ${formatDate(race.date)}</span>
       </div>
+      <div class="tap-hint">Tap for trend &rarr;</div>
     </div>
   `;
 }
@@ -420,6 +624,190 @@ function render() {
   }
 
   racesContainer.innerHTML = races.map(renderRaceCard).join("");
+}
+
+// Modal elements
+const modalOverlay = document.getElementById("modal-overlay");
+const raceModal = document.getElementById("race-modal");
+const modalClose = document.getElementById("modal-close");
+const modalHeader = document.getElementById("modal-header");
+const modalPolls = document.getElementById("modal-polls");
+const trendCanvas = document.getElementById("trend-chart");
+
+function openRaceDetail(abbr) {
+  const race = pollingData[currentChamber].find(r => r.abbr === abbr);
+  const trends = pollingTrends[abbr];
+  if (!race || !trends) return;
+
+  const dem = race.candidates.find(c => c.party === "dem");
+  const rep = race.candidates.find(c => c.party === "rep");
+
+  modalHeader.innerHTML = `
+    <div class="modal-title-row">
+      <h2>${race.state} <span class="state-abbr">${race.abbr}</span></h2>
+      <span class="race-rating ${race.rating}">${getRatingLabel(race.rating)}</span>
+    </div>
+    <div class="modal-candidates">
+      <span class="modal-cand dem-text">${dem.name} (D) — ${dem.pct}%</span>
+      <span class="modal-vs">vs</span>
+      <span class="modal-cand rep-text">${rep.name} (R) — ${rep.pct}%</span>
+    </div>
+  `;
+
+  // Render poll history table
+  modalPolls.innerHTML = `
+    <h3>Poll History</h3>
+    <div class="poll-table-wrapper">
+      <table class="poll-table">
+        <thead>
+          <tr><th>Date</th><th>Pollster</th><th class="dem-text">Dem</th><th class="rep-text">Rep</th><th>Margin</th></tr>
+        </thead>
+        <tbody>
+          ${trends.slice().reverse().map(p => {
+            const m = (p.dem - p.rep).toFixed(1);
+            const mLabel = m > 0 ? `D+${m}` : m < 0 ? `R+${Math.abs(m).toFixed(1)}` : "Tie";
+            const mClass = m > 0 ? "dem-leading" : m < 0 ? "rep-leading" : "tied";
+            return `<tr>
+              <td>${formatDate(p.date)}</td>
+              <td>${p.pollster}</td>
+              <td class="dem-text">${p.dem}%</td>
+              <td class="rep-text">${p.rep}%</td>
+              <td class="margin-text ${mClass}">${mLabel}</td>
+            </tr>`;
+          }).join("")}
+        </tbody>
+      </table>
+    </div>
+  `;
+
+  drawTrendChart(trends);
+  modalOverlay.classList.add("active");
+  document.body.style.overflow = "hidden";
+}
+
+function closeModal() {
+  modalOverlay.classList.remove("active");
+  document.body.style.overflow = "";
+}
+
+modalClose.addEventListener("click", closeModal);
+modalOverlay.addEventListener("click", (e) => {
+  if (e.target === modalOverlay) closeModal();
+});
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape") closeModal();
+});
+
+// Delegate click on race cards
+racesContainer.addEventListener("click", (e) => {
+  const card = e.target.closest(".race-card");
+  if (card) openRaceDetail(card.dataset.raceAbbr);
+});
+
+function drawTrendChart(trends) {
+  const dpr = window.devicePixelRatio || 1;
+  const rect = trendCanvas.parentElement.getBoundingClientRect();
+  const w = rect.width || 600;
+  const h = 280;
+
+  trendCanvas.width = w * dpr;
+  trendCanvas.height = h * dpr;
+  trendCanvas.style.width = w + "px";
+  trendCanvas.style.height = h + "px";
+
+  const ctx = trendCanvas.getContext("2d");
+  ctx.scale(dpr, dpr);
+  ctx.clearRect(0, 0, w, h);
+
+  const pad = { top: 30, right: 20, bottom: 50, left: 45 };
+  const chartW = w - pad.left - pad.right;
+  const chartH = h - pad.top - pad.bottom;
+
+  // Compute y range
+  const allVals = trends.flatMap(t => [t.dem, t.rep]);
+  const yMin = Math.floor(Math.min(...allVals) - 2);
+  const yMax = Math.ceil(Math.max(...allVals) + 2);
+
+  const xScale = (i) => pad.left + (i / (trends.length - 1)) * chartW;
+  const yScale = (v) => pad.top + chartH - ((v - yMin) / (yMax - yMin)) * chartH;
+
+  // Grid lines
+  ctx.strokeStyle = "#333744";
+  ctx.lineWidth = 0.5;
+  const ySteps = 5;
+  for (let i = 0; i <= ySteps; i++) {
+    const val = yMin + (i / ySteps) * (yMax - yMin);
+    const y = yScale(val);
+    ctx.beginPath();
+    ctx.moveTo(pad.left, y);
+    ctx.lineTo(w - pad.right, y);
+    ctx.stroke();
+    ctx.fillStyle = "#9aa0a6";
+    ctx.font = "11px -apple-system, sans-serif";
+    ctx.textAlign = "right";
+    ctx.fillText(val.toFixed(0) + "%", pad.left - 8, y + 4);
+  }
+
+  // X-axis labels
+  ctx.textAlign = "center";
+  ctx.fillStyle = "#9aa0a6";
+  trends.forEach((t, i) => {
+    const x = xScale(i);
+    ctx.fillText(formatDate(t.date), x, h - pad.bottom + 20);
+  });
+
+  // Draw Dem line
+  ctx.strokeStyle = "#4393c3";
+  ctx.lineWidth = 3;
+  ctx.lineJoin = "round";
+  ctx.lineCap = "round";
+  ctx.beginPath();
+  trends.forEach((t, i) => {
+    const x = xScale(i);
+    const y = yScale(t.dem);
+    if (i === 0) ctx.moveTo(x, y);
+    else ctx.lineTo(x, y);
+  });
+  ctx.stroke();
+
+  // Draw Rep line
+  ctx.strokeStyle = "#d6604d";
+  ctx.beginPath();
+  trends.forEach((t, i) => {
+    const x = xScale(i);
+    const y = yScale(t.rep);
+    if (i === 0) ctx.moveTo(x, y);
+    else ctx.lineTo(x, y);
+  });
+  ctx.stroke();
+
+  // Data points
+  trends.forEach((t, i) => {
+    const x = xScale(i);
+    // Dem dot
+    ctx.fillStyle = "#4393c3";
+    ctx.beginPath();
+    ctx.arc(x, yScale(t.dem), 5, 0, Math.PI * 2);
+    ctx.fill();
+    // Rep dot
+    ctx.fillStyle = "#d6604d";
+    ctx.beginPath();
+    ctx.arc(x, yScale(t.rep), 5, 0, Math.PI * 2);
+    ctx.fill();
+  });
+
+  // Legend
+  ctx.font = "12px -apple-system, sans-serif";
+  ctx.fillStyle = "#4393c3";
+  ctx.fillRect(pad.left, 8, 14, 14);
+  ctx.fillStyle = "#e8eaed";
+  ctx.textAlign = "left";
+  ctx.fillText("Dem", pad.left + 20, 20);
+
+  ctx.fillStyle = "#d6604d";
+  ctx.fillRect(pad.left + 65, 8, 14, 14);
+  ctx.fillStyle = "#e8eaed";
+  ctx.fillText("Rep", pad.left + 85, 20);
 }
 
 init();
