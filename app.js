@@ -433,6 +433,135 @@ const pollingData = {
   ]
 };
 
+// News stories for each race (keyed by abbr)
+const raceNews = {
+  "AZ": [
+    { title: "Arizona Senate race tightens as Gallego edges ahead", source: "Arizona Republic", url: "https://www.azcentral.com" },
+    { title: "Kari Lake pivots strategy in closely watched Senate bid", source: "Politico", url: "https://www.politico.com" },
+    { title: "Latino voter turnout could decide Arizona Senate race", source: "NBC News", url: "https://www.nbcnews.com" }
+  ],
+  "GA": [
+    { title: "Georgia Senate race heats up as Hogan builds lead", source: "Atlanta Journal-Constitution", url: "https://www.ajc.com" },
+    { title: "Ossoff faces headwinds in re-election campaign", source: "The Hill", url: "https://thehill.com" },
+    { title: "Suburban Atlanta voters key to Georgia Senate outcome", source: "CNN", url: "https://www.cnn.com" }
+  ],
+  "MI": [
+    { title: "Peters holds steady lead in Michigan Senate race", source: "Detroit Free Press", url: "https://www.freep.com" },
+    { title: "Auto industry policy dominates Michigan Senate debate", source: "Reuters", url: "https://www.reuters.com" },
+    { title: "Michigan poll shows Peters expanding advantage", source: "The Hill", url: "https://thehill.com" }
+  ],
+  "NV": [
+    { title: "Nevada Senate race remains a coin flip", source: "Las Vegas Review-Journal", url: "https://www.reviewjournal.com" },
+    { title: "Cortez Masto and Brown clash on immigration policy", source: "Politico", url: "https://www.politico.com" },
+    { title: "Housing costs emerge as top issue in Nevada Senate race", source: "AP News", url: "https://apnews.com" }
+  ],
+  "PA": [
+    { title: "Pennsylvania Senate race narrows to within margin of error", source: "Philadelphia Inquirer", url: "https://www.inquirer.com" },
+    { title: "Fetterman's voting record becomes campaign flashpoint", source: "CNN", url: "https://www.cnn.com" },
+    { title: "McCormick gains ground in crucial Pennsylvania contest", source: "Politico", url: "https://www.politico.com" }
+  ],
+  "WI": [
+    { title: "Baldwin builds comfortable lead in Wisconsin", source: "Milwaukee Journal Sentinel", url: "https://www.jsonline.com" },
+    { title: "Wisconsin Senate race: Hovde struggles to gain traction", source: "The Hill", url: "https://thehill.com" },
+    { title: "Rural vs. urban divide shapes Wisconsin Senate battle", source: "AP News", url: "https://apnews.com" }
+  ],
+  "OH": [
+    { title: "Ohio trends further toward Moreno in Senate race", source: "Cleveland Plain Dealer", url: "https://www.cleveland.com" },
+    { title: "Ryan faces uphill battle in increasingly red Ohio", source: "NBC News", url: "https://www.nbcnews.com" },
+    { title: "Manufacturing jobs top voter concerns in Ohio Senate race", source: "Reuters", url: "https://www.reuters.com" }
+  ],
+  "NC": [
+    { title: "North Carolina Senate race tightening in final stretch", source: "Charlotte Observer", url: "https://www.charlotteobserver.com" },
+    { title: "Beasley edges ahead in latest NC polling", source: "Politico", url: "https://www.politico.com" },
+    { title: "Education policy splits NC Senate candidates", source: "WRAL", url: "https://www.wral.com" }
+  ],
+  "NH": [
+    { title: "Hassan cruises toward re-election in New Hampshire", source: "New Hampshire Union Leader", url: "https://www.unionleader.com" },
+    { title: "Bolduc campaign struggles with fundraising gap", source: "The Hill", url: "https://thehill.com" },
+    { title: "New Hampshire Senate race reflects broader GOP challenges", source: "CNN", url: "https://www.cnn.com" }
+  ],
+  "FL": [
+    { title: "Rick Scott extends lead in Florida Senate race", source: "Miami Herald", url: "https://www.miamiherald.com" },
+    { title: "Demings faces name recognition challenge statewide", source: "Politico", url: "https://www.politico.com" },
+    { title: "Florida's shifting demographics test Senate candidates", source: "NBC News", url: "https://www.nbcnews.com" }
+  ],
+  "TX": [
+    { title: "Cruz holds comfortable lead in Texas Senate race", source: "Texas Tribune", url: "https://www.texastribune.org" },
+    { title: "Allred focuses campaign on border communities", source: "Dallas Morning News", url: "https://www.dallasnews.com" },
+    { title: "Texas Senate race fundraising sets new records", source: "AP News", url: "https://apnews.com" }
+  ],
+  "CO": [
+    { title: "Bennet in strong position for Colorado re-election", source: "Denver Post", url: "https://www.denverpost.com" },
+    { title: "Colorado Senate race not competitive, analysts say", source: "Cook Political Report", url: "https://www.cookpolitical.com" }
+  ],
+  "ME": [
+    { title: "King maintains steady lead in Maine Senate race", source: "Portland Press Herald", url: "https://www.pressherald.com" },
+    { title: "LePage struggles to gain ground against King", source: "Bangor Daily News", url: "https://bangordailynews.com" }
+  ],
+  "IA": [
+    { title: "Grassley remains dominant in Iowa Senate race", source: "Des Moines Register", url: "https://www.desmoinesregister.com" },
+    { title: "Iowa Senate race stays firmly in GOP column", source: "The Hill", url: "https://thehill.com" }
+  ],
+  "CA-45": [
+    { title: "Orange County House race emerges as top battleground", source: "Los Angeles Times", url: "https://www.latimes.com" },
+    { title: "Chen gains momentum in CA-45 against Steel", source: "Politico", url: "https://www.politico.com" },
+    { title: "Asian American voters could tip CA-45 outcome", source: "NBC News", url: "https://www.nbcnews.com" }
+  ],
+  "NY-19": [
+    { title: "Molinaro holds narrow lead in NY-19 rematch", source: "Times Union", url: "https://www.timesunion.com" },
+    { title: "Hudson Valley House race one of nation's closest", source: "Politico", url: "https://www.politico.com" }
+  ],
+  "VA-07": [
+    { title: "Spanberger builds lead in Virginia's 7th District", source: "Richmond Times-Dispatch", url: "https://richmond.com" },
+    { title: "VA-07: Suburban shift continues to favor Democrats", source: "The Hill", url: "https://thehill.com" }
+  ],
+  "CO-08": [
+    { title: "Colorado's newest district remains a toss-up", source: "Denver Post", url: "https://www.denverpost.com" },
+    { title: "Caraveo edges ahead in CO-08 race", source: "Politico", url: "https://www.politico.com" }
+  ],
+  "MI-10": [
+    { title: "John James leads in Michigan's 10th District", source: "Detroit News", url: "https://www.detroitnews.com" },
+    { title: "MI-10: Macomb County voters split on economy", source: "CNN", url: "https://www.cnn.com" }
+  ],
+  "OR-05": [
+    { title: "McLeod-Skinner holds edge in Oregon's 5th", source: "Oregonian", url: "https://www.oregonlive.com" },
+    { title: "Oregon redistricting reshapes competitive House race", source: "AP News", url: "https://apnews.com" }
+  ],
+  "KS-03": [
+    { title: "Davids favored in Kansas City-area House race", source: "Kansas City Star", url: "https://www.kansascity.com" },
+    { title: "KS-03: Suburban trends boost Davids re-election bid", source: "The Hill", url: "https://thehill.com" }
+  ],
+  "PA-07": [
+    { title: "Wild leads comfortably in Lehigh Valley district", source: "Morning Call", url: "https://www.mcall.com" },
+    { title: "PA-07: Democrats feel confident in House race", source: "Politico", url: "https://www.politico.com" }
+  ],
+  "TX-34": [
+    { title: "Flores looks to hold TX-34 for Republicans", source: "Texas Tribune", url: "https://www.texastribune.org" },
+    { title: "South Texas district remains competitive battleground", source: "NBC News", url: "https://www.nbcnews.com" }
+  ],
+  "NJ-07": [
+    { title: "Kean edges Malinowski in NJ-07 rematch", source: "NJ.com", url: "https://www.nj.com" },
+    { title: "New Jersey House race among nation's most expensive", source: "Politico", url: "https://www.politico.com" }
+  ],
+  "OH-01": [
+    { title: "Chabot holds lead in Cincinnati-area House race", source: "Cincinnati Enquirer", url: "https://www.cincinnati.com" },
+    { title: "OH-01: Landsman closes gap in competitive district", source: "The Hill", url: "https://thehill.com" }
+  ],
+  "WA-03": [
+    { title: "Kent holds solid lead in Washington's 3rd District", source: "Columbian", url: "https://www.columbian.com" },
+    { title: "WA-03 stays in Republican column, polls show", source: "AP News", url: "https://apnews.com" }
+  ],
+  "IL-06": [
+    { title: "Casten cruises in suburban Chicago House race", source: "Chicago Tribune", url: "https://www.chicagotribune.com" },
+    { title: "IL-06: Democrats maintain strong hold on DuPage County", source: "Daily Herald", url: "https://www.dailyherald.com" }
+  ],
+  "NC-13": [
+    { title: "NC-13 emerges as one of nation's tightest House races", source: "Charlotte Observer", url: "https://www.charlotteobserver.com" },
+    { title: "Nickel and Hines battle for Research Triangle voters", source: "WRAL", url: "https://www.wral.com" },
+    { title: "North Carolina redistricting creates new battleground", source: "Politico", url: "https://www.politico.com" }
+  ]
+};
+
 // State
 let currentChamber = "senate";
 
@@ -632,6 +761,7 @@ const raceModal = document.getElementById("race-modal");
 const modalClose = document.getElementById("modal-close");
 const modalHeader = document.getElementById("modal-header");
 const modalPolls = document.getElementById("modal-polls");
+const modalNews = document.getElementById("modal-news");
 const trendCanvas = document.getElementById("trend-chart");
 
 function openRaceDetail(abbr) {
@@ -679,6 +809,26 @@ function openRaceDetail(abbr) {
       </table>
     </div>
   `;
+
+  // Render related news
+  const news = raceNews[abbr] || [];
+  if (news.length > 0) {
+    modalNews.innerHTML = `
+      <h3>Related News</h3>
+      <ul class="news-list">
+        ${news.map(n => `
+          <li class="news-item">
+            <a href="${n.url}" target="_blank" rel="noopener noreferrer">
+              <span class="news-title">${n.title}</span>
+              <span class="news-source">${n.source}</span>
+            </a>
+          </li>
+        `).join("")}
+      </ul>
+    `;
+  } else {
+    modalNews.innerHTML = "";
+  }
 
   drawTrendChart(trends);
   modalOverlay.classList.add("active");
