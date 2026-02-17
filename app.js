@@ -859,7 +859,7 @@ function openRaceDetail(abbr) {
           <h3>Related News</h3>
           <ul class="news-list">
             ${items.map(n => {
-              const href = `https://www.google.com/search?btnI&q=${encodeURIComponent(n.title + " " + n.source)}`;
+              const href = `https://duckduckgo.com/?q=!ducky+${encodeURIComponent(n.title + " " + n.source)}`;
               return `
               <li class="news-item">
                 <a href="${href}" target="_blank" rel="noopener noreferrer">
