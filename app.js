@@ -585,7 +585,6 @@ async function fetchNews(query) {
   }
 
   const json = await res.json();
-  console.log("Currents API response:", json);
   const articles = (json.news || []).map(a => ({
     title: a.title,
     source: a.author || new URL(a.url).hostname,
@@ -860,7 +859,7 @@ function openRaceDetail(abbr) {
           <h3>Related News</h3>
           <ul class="news-list">
             ${items.map(n => {
-              const href = n.url && n.url.startsWith("http") ? n.url : `https://www.google.com/search?q=${encodeURIComponent(n.title + " " + n.source)}`;
+              const href = `https://www.google.com/search?q=${encodeURIComponent(n.title + " " + n.source)}`;
               return `
               <li class="news-item">
                 <a href="${href}" target="_blank" rel="noopener noreferrer">
