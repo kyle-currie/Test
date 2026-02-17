@@ -846,62 +846,27 @@ function openRaceDetail(abbr) {
     </div>
   `;
 
-  // Render related news — fetch live, fall back to static
-  const newsQuery = `${race.state} ${currentChamber} election 2026`;
-  modalNews.innerHTML = `
-    <h3>Related News</h3>
-    <div class="news-loading">Loading latest news&hellip;</div>
-  `;
-
-  fetchNews(newsQuery)
-    .then(articles => {
-      const isLive = articles.length > 0;
-      const items = isLive ? articles : (raceNews[abbr] || []);
-      if (items.length > 0) {
-        modalNews.innerHTML = `
-          <h3>Related News</h3>
-          <ul class="news-list">
-            ${items.map(n => {
-              const href = `https://duckduckgo.com/?q=!ducky+${encodeURIComponent(n.title + " " + n.source + " 2026")}`;
-              return `
-              <li class="news-item">
-                <a href="${href}" target="_blank" rel="noopener noreferrer">
-                  <span class="news-title">${n.title}</span>
-                  <span class="news-source">${n.source}</span>
-                </a>
-              </li>`;
-            }).join("")}
-          </ul>
-        `;
-      } else {
-        modalNews.innerHTML = "";
-      }
-    })
-    .catch(() => {
-      // Fallback to static news on error
-      const news = raceNews[abbr] || [];
-      if (news.length > 0) {
-        modalNews.innerHTML = `
-          <h3>Related News</h3>
-          <div class="news-error">Could not load live news. Showing cached results.</div>
-          <ul class="news-list">
-            ${news.map(n => `
-              <li class="news-item">
-                <a href="https://www.google.com/search?q=${encodeURIComponent(n.title + " " + n.source)}" target="_blank" rel="noopener noreferrer">
-                  <span class="news-title">${n.title}</span>
-                  <span class="news-source">${n.source}</span>
-                </a>
-              </li>
-            `).join("")}
-          </ul>
-        `;
-      } else {
-        modalNews.innerHTML = `
-          <h3>Related News</h3>
-          <div class="news-error">Could not load news for this race.</div>
-        `;
-      }
-    });
+  // Render related news from curated 2026 data
+  const items = raceNews[abbr] || [];
+  if (items.length > 0) {
+    modalNews.innerHTML = `
+      <h3>Related News</h3>
+      <ul class="news-list">
+        ${items.map(n => {
+          const href = `https://duckduckgo.com/?q=!ducky+${encodeURIComponent(n.title + " " + n.source + " 2026")}`;
+          return `
+          <li class="news-item">
+            <a href="${href}" target="_blank" rel="noopener noreferrer">
+              <span class="news-title">${n.title}</span>
+              <span class="news-source">${n.source}</span>
+            </a>
+          </li>`;
+        }).join("")}
+      </ul>
+    `;
+  } else {
+    modalNews.innerHTML = "";
+  }
 
   drawTrendChart(trends);
   modalOverlay.classList.add("active");
