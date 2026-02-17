@@ -564,7 +564,7 @@ const raceNews = {
 
 // Currents API configuration
 const NEWS_API_BASE = "https://api.currentsapi.services/v1";
-const NEWS_API_KEY = "YOUR_API_KEY"; // Replace with actual Currents API key
+const NEWS_API_KEY = "75NWdlRmWv9dosLZvtrHcJR8wMMHspVi6Fl1RXVQj5Xnx_Vo";
 
 // News cache: { [query]: { data, timestamp } }
 const newsCache = {};
