@@ -852,19 +852,22 @@ function openRaceDetail(abbr) {
 
   fetchNews(newsQuery)
     .then(articles => {
-      const items = articles.length > 0 ? articles : (raceNews[abbr] || []);
+      const isLive = articles.length > 0;
+      const items = isLive ? articles : (raceNews[abbr] || []);
       if (items.length > 0) {
         modalNews.innerHTML = `
           <h3>Related News</h3>
           <ul class="news-list">
-            ${items.map(n => `
+            ${items.map(n => {
+              const href = isLive ? n.url : `https://www.google.com/search?q=${encodeURIComponent(n.title + " " + n.source)}`;
+              return `
               <li class="news-item">
-                <a href="${n.url}" target="_blank" rel="noopener noreferrer">
+                <a href="${href}" target="_blank" rel="noopener noreferrer">
                   <span class="news-title">${n.title}</span>
                   <span class="news-source">${n.source}</span>
                 </a>
-              </li>
-            `).join("")}
+              </li>`;
+            }).join("")}
           </ul>
         `;
       } else {
@@ -881,7 +884,7 @@ function openRaceDetail(abbr) {
           <ul class="news-list">
             ${news.map(n => `
               <li class="news-item">
-                <a href="${n.url}" target="_blank" rel="noopener noreferrer">
+                <a href="https://www.google.com/search?q=${encodeURIComponent(n.title + " " + n.source)}" target="_blank" rel="noopener noreferrer">
                   <span class="news-title">${n.title}</span>
                   <span class="news-source">${n.source}</span>
                 </a>
