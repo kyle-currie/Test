@@ -562,6 +562,39 @@ const raceNews = {
   ]
 };
 
+// Currents API configuration
+const NEWS_API_BASE = "https://api.currentsapi.services/v1";
+const NEWS_API_KEY = "YOUR_API_KEY"; // Replace with actual Currents API key
+
+// News cache: { [query]: { data, timestamp } }
+const newsCache = {};
+const NEWS_CACHE_TTL = 15 * 60 * 1000; // 15 minutes
+
+async function fetchNews(query) {
+  const cacheKey = query.toLowerCase();
+  const cached = newsCache[cacheKey];
+  if (cached && Date.now() - cached.timestamp < NEWS_CACHE_TTL) {
+    return cached.data;
+  }
+
+  const url = `${NEWS_API_BASE}/search?keywords=${encodeURIComponent(query)}&language=en&category=politics&page_size=5&apiKey=${NEWS_API_KEY}`;
+
+  const res = await fetch(url);
+  if (!res.ok) {
+    throw new Error(`News API error: ${res.status}`);
+  }
+
+  const json = await res.json();
+  const articles = (json.news || []).map(a => ({
+    title: a.title,
+    source: a.author || new URL(a.url).hostname,
+    url: a.url
+  }));
+
+  newsCache[cacheKey] = { data: articles, timestamp: Date.now() };
+  return articles;
+}
+
 // State
 let currentChamber = "senate";
 
@@ -810,25 +843,59 @@ function openRaceDetail(abbr) {
     </div>
   `;
 
-  // Render related news
-  const news = raceNews[abbr] || [];
-  if (news.length > 0) {
-    modalNews.innerHTML = `
-      <h3>Related News</h3>
-      <ul class="news-list">
-        ${news.map(n => `
-          <li class="news-item">
-            <a href="${n.url}" target="_blank" rel="noopener noreferrer">
-              <span class="news-title">${n.title}</span>
-              <span class="news-source">${n.source}</span>
-            </a>
-          </li>
-        `).join("")}
-      </ul>
-    `;
-  } else {
-    modalNews.innerHTML = "";
-  }
+  // Render related news — fetch live, fall back to static
+  const newsQuery = `${race.state} ${currentChamber} election 2026`;
+  modalNews.innerHTML = `
+    <h3>Related News</h3>
+    <div class="news-loading">Loading latest news&hellip;</div>
+  `;
+
+  fetchNews(newsQuery)
+    .then(articles => {
+      const items = articles.length > 0 ? articles : (raceNews[abbr] || []);
+      if (items.length > 0) {
+        modalNews.innerHTML = `
+          <h3>Related News</h3>
+          <ul class="news-list">
+            ${items.map(n => `
+              <li class="news-item">
+                <a href="${n.url}" target="_blank" rel="noopener noreferrer">
+                  <span class="news-title">${n.title}</span>
+                  <span class="news-source">${n.source}</span>
+                </a>
+              </li>
+            `).join("")}
+          </ul>
+        `;
+      } else {
+        modalNews.innerHTML = "";
+      }
+    })
+    .catch(() => {
+      // Fallback to static news on error
+      const news = raceNews[abbr] || [];
+      if (news.length > 0) {
+        modalNews.innerHTML = `
+          <h3>Related News</h3>
+          <div class="news-error">Could not load live news. Showing cached results.</div>
+          <ul class="news-list">
+            ${news.map(n => `
+              <li class="news-item">
+                <a href="${n.url}" target="_blank" rel="noopener noreferrer">
+                  <span class="news-title">${n.title}</span>
+                  <span class="news-source">${n.source}</span>
+                </a>
+              </li>
+            `).join("")}
+          </ul>
+        `;
+      } else {
+        modalNews.innerHTML = `
+          <h3>Related News</h3>
+          <div class="news-error">Could not load news for this race.</div>
+        `;
+      }
+    });
 
   drawTrendChart(trends);
   modalOverlay.classList.add("active");
