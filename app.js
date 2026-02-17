@@ -585,11 +585,14 @@ async function fetchNews(query) {
   }
 
   const json = await res.json();
-  const articles = (json.news || []).map(a => ({
-    title: a.title,
-    source: a.author || new URL(a.url).hostname,
-    url: a.url
-  }));
+  const cutoff = new Date("2025-06-01").getTime();
+  const articles = (json.news || [])
+    .filter(a => !a.published || new Date(a.published).getTime() >= cutoff)
+    .map(a => ({
+      title: a.title,
+      source: a.author || new URL(a.url).hostname,
+      url: a.url
+    }));
 
   newsCache[cacheKey] = { data: articles, timestamp: Date.now() };
   return articles;
@@ -859,7 +862,7 @@ function openRaceDetail(abbr) {
           <h3>Related News</h3>
           <ul class="news-list">
             ${items.map(n => {
-              const href = `https://duckduckgo.com/?q=!ducky+${encodeURIComponent(n.title + " " + n.source)}`;
+              const href = `https://duckduckgo.com/?q=!ducky+${encodeURIComponent(n.title + " " + n.source + " 2026")}`;
               return `
               <li class="news-item">
                 <a href="${href}" target="_blank" rel="noopener noreferrer">
