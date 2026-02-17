@@ -1,14 +1,6 @@
 // Historical polling trends for each race (keyed by abbr)
 const pollingTrends = {
-  // Senate
-  "AZ": [
-    { date: "2025-11-15", dem: 45.0, rep: 47.5, pollster: "OH Predictive" },
-    { date: "2025-12-10", dem: 45.8, rep: 47.1, pollster: "Marist College" },
-    { date: "2026-01-05", dem: 46.5, rep: 47.0, pollster: "Emerson College" },
-    { date: "2026-01-18", dem: 47.2, rep: 47.2, pollster: "Suffolk University" },
-    { date: "2026-02-01", dem: 47.8, rep: 46.9, pollster: "Siena College" },
-    { date: "2026-02-10", dem: 48.2, rep: 46.8, pollster: "Marist College" }
-  ],
+  // Senate — Class II seats (up in 2026)
   "GA": [
     { date: "2025-11-20", dem: 46.8, rep: 47.0, pollster: "Emerson College" },
     { date: "2025-12-15", dem: 46.2, rep: 47.8, pollster: "AJC/UGA" },
@@ -22,34 +14,6 @@ const pollingTrends = {
     { date: "2026-01-10", dem: 49.3, rep: 45.0, pollster: "EPIC-MRA" },
     { date: "2026-01-25", dem: 49.7, rep: 44.8, pollster: "Mitchell Research" },
     { date: "2026-02-12", dem: 50.1, rep: 44.7, pollster: "EPIC-MRA" }
-  ],
-  "NV": [
-    { date: "2025-11-18", dem: 46.0, rep: 46.2, pollster: "Suffolk University" },
-    { date: "2025-12-12", dem: 46.5, rep: 46.8, pollster: "Nevada Ind. Poll" },
-    { date: "2026-01-06", dem: 46.8, rep: 47.0, pollster: "Emerson College" },
-    { date: "2026-01-20", dem: 47.0, rep: 47.2, pollster: "Mason-Dixon" },
-    { date: "2026-02-09", dem: 47.0, rep: 47.5, pollster: "Suffolk University" }
-  ],
-  "PA": [
-    { date: "2025-11-12", dem: 48.5, rep: 45.0, pollster: "Franklin & Marshall" },
-    { date: "2025-12-08", dem: 48.0, rep: 45.8, pollster: "Quinnipiac" },
-    { date: "2026-01-09", dem: 47.5, rep: 46.2, pollster: "Emerson College" },
-    { date: "2026-01-28", dem: 47.2, rep: 46.8, pollster: "Muhlenberg College" },
-    { date: "2026-02-11", dem: 46.9, rep: 47.1, pollster: "Franklin & Marshall" }
-  ],
-  "WI": [
-    { date: "2025-11-08", dem: 49.0, rep: 45.5, pollster: "Marquette Law" },
-    { date: "2025-12-06", dem: 49.5, rep: 45.0, pollster: "Marquette Law" },
-    { date: "2026-01-12", dem: 50.0, rep: 44.5, pollster: "Marquette Law" },
-    { date: "2026-01-30", dem: 50.4, rep: 44.3, pollster: "Emerson College" },
-    { date: "2026-02-13", dem: 50.8, rep: 44.2, pollster: "Marquette Law" }
-  ],
-  "OH": [
-    { date: "2025-11-15", dem: 45.0, rep: 48.0, pollster: "Emerson College" },
-    { date: "2025-12-10", dem: 44.5, rep: 49.0, pollster: "Baldwin Wallace" },
-    { date: "2026-01-07", dem: 44.0, rep: 49.5, pollster: "Quinnipiac" },
-    { date: "2026-01-25", dem: 43.8, rep: 49.9, pollster: "Emerson College" },
-    { date: "2026-02-07", dem: 43.5, rep: 50.2, pollster: "Emerson College" }
   ],
   "NC": [
     { date: "2025-11-20", dem: 46.0, rep: 47.8, pollster: "PPP" },
@@ -65,19 +29,12 @@ const pollingTrends = {
     { date: "2026-01-22", dem: 51.1, rep: 43.0, pollster: "Emerson College" },
     { date: "2026-02-06", dem: 51.4, rep: 42.8, pollster: "UNH Survey Center" }
   ],
-  "FL": [
-    { date: "2025-11-18", dem: 45.5, rep: 49.0, pollster: "Mason-Dixon" },
-    { date: "2025-12-12", dem: 45.0, rep: 49.5, pollster: "FAU BEPI" },
-    { date: "2026-01-08", dem: 44.5, rep: 50.0, pollster: "Quinnipiac" },
-    { date: "2026-01-24", dem: 44.2, rep: 50.3, pollster: "Mason-Dixon" },
-    { date: "2026-02-05", dem: 44.0, rep: 50.6, pollster: "Mason-Dixon" }
-  ],
-  "TX": [
-    { date: "2025-11-14", dem: 42.8, rep: 51.5, pollster: "UT Tyler" },
-    { date: "2025-12-09", dem: 42.2, rep: 52.0, pollster: "Quinnipiac" },
-    { date: "2026-01-06", dem: 41.8, rep: 52.8, pollster: "UT Tyler" },
-    { date: "2026-01-22", dem: 41.5, rep: 53.1, pollster: "Emerson College" },
-    { date: "2026-02-04", dem: 41.2, rep: 53.4, pollster: "UT Tyler" }
+  "ME": [
+    { date: "2025-11-15", dem: 47.5, rep: 48.5, pollster: "Critical Insights" },
+    { date: "2025-12-10", dem: 48.0, rep: 48.0, pollster: "Colby College" },
+    { date: "2026-01-08", dem: 48.3, rep: 47.5, pollster: "Critical Insights" },
+    { date: "2026-01-20", dem: 48.5, rep: 47.3, pollster: "Pan Atlantic" },
+    { date: "2026-02-01", dem: 48.8, rep: 47.0, pollster: "Critical Insights" }
   ],
   "CO": [
     { date: "2025-11-10", dem: 52.5, rep: 41.5, pollster: "Keating Research" },
@@ -86,19 +43,61 @@ const pollingTrends = {
     { date: "2026-01-26", dem: 53.9, rep: 40.0, pollster: "Keating Research" },
     { date: "2026-02-03", dem: 54.2, rep: 39.8, pollster: "Keating Research" }
   ],
-  "ME": [
-    { date: "2025-11-15", dem: 48.5, rep: 44.5, pollster: "Critical Insights" },
-    { date: "2025-12-10", dem: 49.0, rep: 44.0, pollster: "Colby College" },
-    { date: "2026-01-08", dem: 49.3, rep: 43.5, pollster: "Critical Insights" },
-    { date: "2026-01-20", dem: 49.5, rep: 43.3, pollster: "Pan Atlantic" },
-    { date: "2026-02-01", dem: 49.7, rep: 43.1, pollster: "Critical Insights" }
-  ],
   "IA": [
-    { date: "2025-11-10", dem: 41.0, rep: 53.5, pollster: "Selzer & Co" },
-    { date: "2025-12-05", dem: 40.5, rep: 54.0, pollster: "Emerson College" },
-    { date: "2026-01-06", dem: 40.0, rep: 54.5, pollster: "Selzer & Co" },
-    { date: "2026-01-18", dem: 39.8, rep: 54.8, pollster: "Civiqs" },
-    { date: "2026-01-30", dem: 39.5, rep: 55.1, pollster: "Selzer & Co" }
+    { date: "2025-11-10", dem: 44.0, rep: 50.5, pollster: "Selzer & Co" },
+    { date: "2025-12-05", dem: 44.5, rep: 50.0, pollster: "Emerson College" },
+    { date: "2026-01-06", dem: 45.0, rep: 49.5, pollster: "Selzer & Co" },
+    { date: "2026-01-18", dem: 45.2, rep: 49.3, pollster: "Civiqs" },
+    { date: "2026-01-30", dem: 45.5, rep: 49.0, pollster: "Selzer & Co" }
+  ],
+  "TX": [
+    { date: "2025-11-14", dem: 42.8, rep: 51.5, pollster: "UT Tyler" },
+    { date: "2025-12-09", dem: 42.2, rep: 52.0, pollster: "Quinnipiac" },
+    { date: "2026-01-06", dem: 41.8, rep: 52.8, pollster: "UT Tyler" },
+    { date: "2026-01-22", dem: 41.5, rep: 53.1, pollster: "Emerson College" },
+    { date: "2026-02-04", dem: 41.2, rep: 53.4, pollster: "UT Tyler" }
+  ],
+  "VA": [
+    { date: "2025-11-12", dem: 50.5, rep: 43.8, pollster: "Roanoke College" },
+    { date: "2025-12-08", dem: 50.0, rep: 44.5, pollster: "CNU Wason" },
+    { date: "2026-01-10", dem: 49.5, rep: 45.0, pollster: "Roanoke College" },
+    { date: "2026-01-28", dem: 49.2, rep: 45.3, pollster: "Emerson College" },
+    { date: "2026-02-11", dem: 49.0, rep: 45.5, pollster: "Roanoke College" }
+  ],
+  "OR": [
+    { date: "2025-11-10", dem: 52.0, rep: 42.0, pollster: "DHM Research" },
+    { date: "2025-12-06", dem: 52.5, rep: 41.5, pollster: "Emerson College" },
+    { date: "2026-01-08", dem: 53.0, rep: 41.0, pollster: "DHM Research" },
+    { date: "2026-01-22", dem: 53.2, rep: 40.8, pollster: "SurveyUSA" },
+    { date: "2026-02-07", dem: 53.5, rep: 40.5, pollster: "DHM Research" }
+  ],
+  "MN": [
+    { date: "2025-11-15", dem: 50.0, rep: 44.0, pollster: "Star Tribune/MPR" },
+    { date: "2025-12-10", dem: 50.5, rep: 43.5, pollster: "Emerson College" },
+    { date: "2026-01-06", dem: 51.0, rep: 43.0, pollster: "KSTP/SurveyUSA" },
+    { date: "2026-01-20", dem: 51.2, rep: 42.8, pollster: "Star Tribune/MPR" },
+    { date: "2026-02-06", dem: 51.5, rep: 42.5, pollster: "Star Tribune/MPR" }
+  ],
+  "MT": [
+    { date: "2025-11-18", dem: 43.0, rep: 51.0, pollster: "Mason-Dixon" },
+    { date: "2025-12-12", dem: 43.5, rep: 50.5, pollster: "Emerson College" },
+    { date: "2026-01-08", dem: 44.0, rep: 50.0, pollster: "UM Big Sky Poll" },
+    { date: "2026-01-24", dem: 44.2, rep: 49.8, pollster: "Mason-Dixon" },
+    { date: "2026-02-10", dem: 44.5, rep: 49.5, pollster: "UM Big Sky Poll" }
+  ],
+  "SC": [
+    { date: "2025-11-14", dem: 38.0, rep: 56.0, pollster: "Winthrop University" },
+    { date: "2025-12-09", dem: 37.5, rep: 56.5, pollster: "Emerson College" },
+    { date: "2026-01-07", dem: 37.0, rep: 57.0, pollster: "Winthrop University" },
+    { date: "2026-01-22", dem: 36.8, rep: 57.2, pollster: "Clemson Palmetto" },
+    { date: "2026-02-05", dem: 36.5, rep: 57.5, pollster: "Winthrop University" }
+  ],
+  "IL": [
+    { date: "2025-11-10", dem: 55.0, rep: 39.0, pollster: "Paul Simon Institute" },
+    { date: "2025-12-06", dem: 55.5, rep: 38.5, pollster: "Emerson College" },
+    { date: "2026-01-08", dem: 56.0, rep: 38.0, pollster: "Paul Simon Institute" },
+    { date: "2026-01-24", dem: 56.2, rep: 37.8, pollster: "SurveyUSA" },
+    { date: "2026-02-08", dem: 56.5, rep: 37.5, pollster: "Paul Simon Institute" }
   ],
   // House
   "CA-45": [
@@ -115,12 +114,12 @@ const pollingTrends = {
     { date: "2026-01-25", dem: 46.9, rep: 47.8, pollster: "Marist College" },
     { date: "2026-02-10", dem: 46.8, rep: 48.1, pollster: "Siena College" }
   ],
-  "VA-07": [
-    { date: "2025-11-10", dem: 49.5, rep: 45.5, pollster: "Roanoke College" },
-    { date: "2025-12-06", dem: 50.0, rep: 45.0, pollster: "CNU Wason" },
-    { date: "2026-01-09", dem: 50.5, rep: 44.5, pollster: "Roanoke College" },
-    { date: "2026-01-26", dem: 51.0, rep: 44.0, pollster: "Emerson College" },
-    { date: "2026-02-11", dem: 51.3, rep: 43.9, pollster: "Roanoke College" }
+  "NE-02": [
+    { date: "2025-11-10", dem: 46.0, rep: 49.0, pollster: "Susquehanna" },
+    { date: "2025-12-06", dem: 46.5, rep: 48.8, pollster: "Emerson College" },
+    { date: "2026-01-09", dem: 47.0, rep: 48.5, pollster: "Susquehanna" },
+    { date: "2026-01-26", dem: 47.2, rep: 48.3, pollster: "SurveyUSA" },
+    { date: "2026-02-11", dem: 47.5, rep: 48.2, pollster: "Susquehanna" }
   ],
   "CO-08": [
     { date: "2025-11-18", dem: 46.0, rep: 47.5, pollster: "Keating Research" },
@@ -129,19 +128,19 @@ const pollingTrends = {
     { date: "2026-01-22", dem: 47.3, rep: 47.0, pollster: "Magellan Strategies" },
     { date: "2026-02-09", dem: 47.6, rep: 47.0, pollster: "Keating Research" }
   ],
-  "MI-10": [
-    { date: "2025-11-14", dem: 45.5, rep: 49.0, pollster: "EPIC-MRA" },
-    { date: "2025-12-09", dem: 45.0, rep: 49.5, pollster: "Glengariff Group" },
-    { date: "2026-01-07", dem: 44.5, rep: 50.0, pollster: "EPIC-MRA" },
-    { date: "2026-01-24", dem: 44.3, rep: 50.5, pollster: "Mitchell Research" },
-    { date: "2026-02-08", dem: 44.1, rep: 50.8, pollster: "EPIC-MRA" }
+  "MI-07": [
+    { date: "2025-11-14", dem: 46.5, rep: 48.0, pollster: "EPIC-MRA" },
+    { date: "2025-12-09", dem: 47.0, rep: 47.8, pollster: "Glengariff Group" },
+    { date: "2026-01-07", dem: 47.5, rep: 47.6, pollster: "EPIC-MRA" },
+    { date: "2026-01-24", dem: 47.8, rep: 47.5, pollster: "Mitchell Research" },
+    { date: "2026-02-08", dem: 48.0, rep: 47.5, pollster: "EPIC-MRA" }
   ],
-  "OR-05": [
-    { date: "2025-11-10", dem: 48.5, rep: 46.0, pollster: "DHM Research" },
-    { date: "2025-12-06", dem: 49.0, rep: 45.8, pollster: "Emerson College" },
-    { date: "2026-01-08", dem: 49.3, rep: 45.5, pollster: "DHM Research" },
-    { date: "2026-01-22", dem: 49.5, rep: 45.5, pollster: "SurveyUSA" },
-    { date: "2026-02-07", dem: 49.8, rep: 45.4, pollster: "DHM Research" }
+  "WA-03": [
+    { date: "2025-11-10", dem: 47.5, rep: 48.0, pollster: "Elway Research" },
+    { date: "2025-12-06", dem: 48.0, rep: 47.5, pollster: "Emerson College" },
+    { date: "2026-01-08", dem: 48.5, rep: 47.2, pollster: "Elway Research" },
+    { date: "2026-01-22", dem: 48.8, rep: 47.0, pollster: "SurveyUSA" },
+    { date: "2026-02-07", dem: 49.0, rep: 46.8, pollster: "Elway Research" }
   ],
   "KS-03": [
     { date: "2025-11-15", dem: 47.0, rep: 47.8, pollster: "Fort Hays State" },
@@ -151,11 +150,11 @@ const pollingTrends = {
     { date: "2026-02-06", dem: 48.9, rep: 46.7, pollster: "Fort Hays State" }
   ],
   "PA-07": [
-    { date: "2025-11-12", dem: 49.0, rep: 45.5, pollster: "Muhlenberg College" },
-    { date: "2025-12-08", dem: 49.5, rep: 45.0, pollster: "Franklin & Marshall" },
-    { date: "2026-01-10", dem: 50.0, rep: 44.8, pollster: "Muhlenberg College" },
-    { date: "2026-01-28", dem: 50.2, rep: 44.5, pollster: "Emerson College" },
-    { date: "2026-02-13", dem: 50.5, rep: 44.3, pollster: "Muhlenberg College" }
+    { date: "2025-11-12", dem: 45.5, rep: 49.5, pollster: "Muhlenberg College" },
+    { date: "2025-12-08", dem: 46.0, rep: 49.0, pollster: "Franklin & Marshall" },
+    { date: "2026-01-10", dem: 46.8, rep: 48.5, pollster: "Muhlenberg College" },
+    { date: "2026-01-28", dem: 47.2, rep: 48.2, pollster: "Emerson College" },
+    { date: "2026-02-13", dem: 47.8, rep: 48.0, pollster: "Muhlenberg College" }
   ],
   "TX-34": [
     { date: "2025-11-10", dem: 46.5, rep: 48.0, pollster: "UT Tyler" },
@@ -171,19 +170,19 @@ const pollingTrends = {
     { date: "2026-01-24", dem: 47.4, rep: 47.8, pollster: "Quinnipiac" },
     { date: "2026-02-14", dem: 47.3, rep: 48.0, pollster: "Monmouth University" }
   ],
-  "OH-01": [
-    { date: "2025-11-18", dem: 42.5, rep: 51.0, pollster: "Emerson College" },
-    { date: "2025-12-12", dem: 43.0, rep: 50.8, pollster: "Baldwin Wallace" },
-    { date: "2026-01-06", dem: 43.5, rep: 50.5, pollster: "Emerson College" },
-    { date: "2026-01-20", dem: 43.8, rep: 50.3, pollster: "Quinnipiac" },
-    { date: "2026-02-04", dem: 44.0, rep: 50.1, pollster: "Emerson College" }
+  "OH-09": [
+    { date: "2025-11-18", dem: 48.5, rep: 46.5, pollster: "Emerson College" },
+    { date: "2025-12-12", dem: 48.2, rep: 47.0, pollster: "Baldwin Wallace" },
+    { date: "2026-01-06", dem: 47.8, rep: 47.5, pollster: "Emerson College" },
+    { date: "2026-01-20", dem: 47.6, rep: 47.8, pollster: "Quinnipiac" },
+    { date: "2026-02-04", dem: 47.5, rep: 48.0, pollster: "Emerson College" }
   ],
-  "WA-03": [
-    { date: "2025-11-10", dem: 41.5, rep: 53.0, pollster: "Elway Research" },
-    { date: "2025-12-06", dem: 41.2, rep: 53.5, pollster: "SurveyUSA" },
-    { date: "2026-01-08", dem: 41.0, rep: 53.8, pollster: "Elway Research" },
-    { date: "2026-01-22", dem: 40.8, rep: 54.0, pollster: "Emerson College" },
-    { date: "2026-02-02", dem: 40.5, rep: 54.2, pollster: "Elway Research" }
+  "AK-AL": [
+    { date: "2025-11-10", dem: 47.0, rep: 47.5, pollster: "Alaska Survey Research" },
+    { date: "2025-12-06", dem: 46.5, rep: 48.0, pollster: "SurveyUSA" },
+    { date: "2026-01-08", dem: 46.0, rep: 48.5, pollster: "Alaska Survey Research" },
+    { date: "2026-01-22", dem: 45.5, rep: 49.0, pollster: "Emerson College" },
+    { date: "2026-02-02", dem: 45.0, rep: 49.5, pollster: "Alaska Survey Research" }
   ],
   "IL-06": [
     { date: "2025-11-14", dem: 53.5, rep: 40.5, pollster: "Paul Simon Institute" },
@@ -192,12 +191,12 @@ const pollingTrends = {
     { date: "2026-01-26", dem: 55.0, rep: 39.0, pollster: "SurveyUSA" },
     { date: "2026-02-03", dem: 55.3, rep: 38.7, pollster: "Paul Simon Institute" }
   ],
-  "NC-13": [
-    { date: "2025-11-12", dem: 46.0, rep: 48.0, pollster: "PPP" },
-    { date: "2025-12-08", dem: 46.5, rep: 47.8, pollster: "High Point Univ" },
-    { date: "2026-01-06", dem: 47.0, rep: 47.8, pollster: "PPP" },
-    { date: "2026-01-22", dem: 47.5, rep: 47.6, pollster: "Meredith College" },
-    { date: "2026-02-11", dem: 47.8, rep: 47.5, pollster: "PPP" }
+  "NC-01": [
+    { date: "2025-11-12", dem: 46.5, rep: 48.0, pollster: "PPP" },
+    { date: "2025-12-08", dem: 47.0, rep: 47.8, pollster: "High Point Univ" },
+    { date: "2026-01-06", dem: 47.5, rep: 47.8, pollster: "PPP" },
+    { date: "2026-01-22", dem: 48.0, rep: 47.6, pollster: "Meredith College" },
+    { date: "2026-02-11", dem: 48.2, rep: 47.5, pollster: "PPP" }
   ]
 };
 
@@ -205,18 +204,10 @@ const pollingTrends = {
 const pollingData = {
   senate: [
     {
-      state: "Arizona", abbr: "AZ", rating: "tossup",
-      candidates: [
-        { name: "Ruben Gallego", party: "dem", pct: 48.2, trend: "up" },
-        { name: "Kari Lake", party: "rep", pct: 46.8, trend: "down" }
-      ],
-      pollster: "Marist College", date: "2026-02-10", sampleSize: 1245
-    },
-    {
       state: "Georgia", abbr: "GA", rating: "lean-r",
       candidates: [
         { name: "Jon Ossoff", party: "dem", pct: 45.1, trend: "down" },
-        { name: "Larry Hogan", party: "rep", pct: 49.3, trend: "up" }
+        { name: "Burt Jones", party: "rep", pct: 49.3, trend: "up" }
       ],
       pollster: "Quinnipiac", date: "2026-02-08", sampleSize: 1102
     },
@@ -224,104 +215,112 @@ const pollingData = {
       state: "Michigan", abbr: "MI", rating: "lean-d",
       candidates: [
         { name: "Gary Peters", party: "dem", pct: 50.1, trend: "up" },
-        { name: "John James", party: "rep", pct: 44.7, trend: "flat" }
+        { name: "Tudor Dixon", party: "rep", pct: 44.7, trend: "flat" }
       ],
       pollster: "EPIC-MRA", date: "2026-02-12", sampleSize: 980
     },
     {
-      state: "Nevada", abbr: "NV", rating: "tossup",
-      candidates: [
-        { name: "Catherine Cortez Masto", party: "dem", pct: 47.0, trend: "flat" },
-        { name: "Sam Brown", party: "rep", pct: 47.5, trend: "up" }
-      ],
-      pollster: "Suffolk University", date: "2026-02-09", sampleSize: 1050
-    },
-    {
-      state: "Pennsylvania", abbr: "PA", rating: "tossup",
-      candidates: [
-        { name: "John Fetterman", party: "dem", pct: 46.9, trend: "down" },
-        { name: "Dave McCormick", party: "rep", pct: 47.1, trend: "up" }
-      ],
-      pollster: "Franklin & Marshall", date: "2026-02-11", sampleSize: 1180
-    },
-    {
-      state: "Wisconsin", abbr: "WI", rating: "lean-d",
-      candidates: [
-        { name: "Tammy Baldwin", party: "dem", pct: 50.8, trend: "up" },
-        { name: "Eric Hovde", party: "rep", pct: 44.2, trend: "down" }
-      ],
-      pollster: "Marquette Law", date: "2026-02-13", sampleSize: 1340
-    },
-    {
-      state: "Ohio", abbr: "OH", rating: "lean-r",
-      candidates: [
-        { name: "Tim Ryan", party: "dem", pct: 43.5, trend: "down" },
-        { name: "Bernie Moreno", party: "rep", pct: 50.2, trend: "up" }
-      ],
-      pollster: "Emerson College", date: "2026-02-07", sampleSize: 1015
-    },
-    {
       state: "North Carolina", abbr: "NC", rating: "tossup",
       candidates: [
-        { name: "Cheri Beasley", party: "dem", pct: 47.6, trend: "up" },
-        { name: "Ted Budd", party: "rep", pct: 47.3, trend: "flat" }
+        { name: "Jeff Jackson", party: "dem", pct: 47.6, trend: "up" },
+        { name: "Thom Tillis", party: "rep", pct: 47.3, trend: "flat" }
       ],
       pollster: "PPP", date: "2026-02-14", sampleSize: 890
     },
     {
       state: "New Hampshire", abbr: "NH", rating: "lean-d",
       candidates: [
-        { name: "Maggie Hassan", party: "dem", pct: 51.4, trend: "up" },
-        { name: "Don Bolduc", party: "rep", pct: 42.8, trend: "down" }
+        { name: "Jeanne Shaheen", party: "dem", pct: 51.4, trend: "up" },
+        { name: "Chris Sununu", party: "rep", pct: 42.8, trend: "down" }
       ],
       pollster: "UNH Survey Center", date: "2026-02-06", sampleSize: 975
     },
     {
-      state: "Florida", abbr: "FL", rating: "lean-r",
+      state: "Maine", abbr: "ME", rating: "tossup",
       candidates: [
-        { name: "Val Demings", party: "dem", pct: 44.0, trend: "flat" },
-        { name: "Rick Scott", party: "rep", pct: 50.6, trend: "up" }
-      ],
-      pollster: "Mason-Dixon", date: "2026-02-05", sampleSize: 1125
-    },
-    {
-      state: "Texas", abbr: "TX", rating: "solid-r",
-      candidates: [
-        { name: "Colin Allred", party: "dem", pct: 41.2, trend: "down" },
-        { name: "Ted Cruz", party: "rep", pct: 53.4, trend: "up" }
-      ],
-      pollster: "UT Tyler", date: "2026-02-04", sampleSize: 1300
-    },
-    {
-      state: "Colorado", abbr: "CO", rating: "solid-d",
-      candidates: [
-        { name: "Michael Bennet", party: "dem", pct: 54.2, trend: "up" },
-        { name: "Joe O'Dea", party: "rep", pct: 39.8, trend: "down" }
-      ],
-      pollster: "Keating Research", date: "2026-02-03", sampleSize: 870
-    },
-    {
-      state: "Maine", abbr: "ME", rating: "lean-d",
-      candidates: [
-        { name: "Angus King", party: "dem", pct: 49.7, trend: "flat" },
-        { name: "Paul LePage", party: "rep", pct: 43.1, trend: "down" }
+        { name: "Jared Golden", party: "dem", pct: 48.8, trend: "up" },
+        { name: "Susan Collins", party: "rep", pct: 47.0, trend: "down" }
       ],
       pollster: "Critical Insights", date: "2026-02-01", sampleSize: 780
     },
     {
-      state: "Iowa", abbr: "IA", rating: "solid-r",
+      state: "Colorado", abbr: "CO", rating: "solid-d",
       candidates: [
-        { name: "Mike Franken", party: "dem", pct: 39.5, trend: "down" },
-        { name: "Chuck Grassley", party: "rep", pct: 55.1, trend: "flat" }
+        { name: "John Hickenlooper", party: "dem", pct: 54.2, trend: "up" },
+        { name: "Gabe Evans", party: "rep", pct: 39.8, trend: "down" }
+      ],
+      pollster: "Keating Research", date: "2026-02-03", sampleSize: 870
+    },
+    {
+      state: "Iowa", abbr: "IA", rating: "lean-r",
+      candidates: [
+        { name: "Rob Sand", party: "dem", pct: 45.5, trend: "up" },
+        { name: "Joni Ernst", party: "rep", pct: 49.0, trend: "down" }
       ],
       pollster: "Selzer & Co", date: "2026-01-30", sampleSize: 1150
+    },
+    {
+      state: "Texas", abbr: "TX", rating: "solid-r",
+      candidates: [
+        { name: "Joaquin Castro", party: "dem", pct: 41.2, trend: "down" },
+        { name: "John Cornyn", party: "rep", pct: 53.4, trend: "up" }
+      ],
+      pollster: "UT Tyler", date: "2026-02-04", sampleSize: 1300
+    },
+    {
+      state: "Virginia", abbr: "VA", rating: "lean-d",
+      candidates: [
+        { name: "Mark Warner", party: "dem", pct: 49.0, trend: "down" },
+        { name: "Glenn Youngkin", party: "rep", pct: 45.5, trend: "up" }
+      ],
+      pollster: "Roanoke College", date: "2026-02-11", sampleSize: 1080
+    },
+    {
+      state: "Oregon", abbr: "OR", rating: "solid-d",
+      candidates: [
+        { name: "Jeff Merkley", party: "dem", pct: 53.5, trend: "up" },
+        { name: "Jo Rae Perkins", party: "rep", pct: 40.5, trend: "down" }
+      ],
+      pollster: "DHM Research", date: "2026-02-07", sampleSize: 890
+    },
+    {
+      state: "Minnesota", abbr: "MN", rating: "lean-d",
+      candidates: [
+        { name: "Tina Smith", party: "dem", pct: 51.5, trend: "up" },
+        { name: "Jim Schultz", party: "rep", pct: 42.5, trend: "down" }
+      ],
+      pollster: "Star Tribune/MPR", date: "2026-02-06", sampleSize: 1020
+    },
+    {
+      state: "Montana", abbr: "MT", rating: "lean-r",
+      candidates: [
+        { name: "Monica Tranel", party: "dem", pct: 44.5, trend: "up" },
+        { name: "Steve Daines", party: "rep", pct: 49.5, trend: "flat" }
+      ],
+      pollster: "UM Big Sky Poll", date: "2026-02-10", sampleSize: 720
+    },
+    {
+      state: "South Carolina", abbr: "SC", rating: "solid-r",
+      candidates: [
+        { name: "Bakari Sellers", party: "dem", pct: 36.5, trend: "down" },
+        { name: "Lindsey Graham", party: "rep", pct: 57.5, trend: "up" }
+      ],
+      pollster: "Winthrop University", date: "2026-02-05", sampleSize: 950
+    },
+    {
+      state: "Illinois", abbr: "IL", rating: "solid-d",
+      candidates: [
+        { name: "Dick Durbin", party: "dem", pct: 56.5, trend: "up" },
+        { name: "Peggy Hubbard", party: "rep", pct: 37.5, trend: "down" }
+      ],
+      pollster: "Paul Simon Institute", date: "2026-02-08", sampleSize: 1100
     }
   ],
   house: [
     {
       state: "California", abbr: "CA-45", rating: "tossup",
       candidates: [
-        { name: "Jay Chen", party: "dem", pct: 48.5, trend: "up" },
+        { name: "Derek Tran", party: "dem", pct: 48.5, trend: "up" },
         { name: "Michelle Steel", party: "rep", pct: 47.2, trend: "down" }
       ],
       pollster: "PPIC", date: "2026-02-12", sampleSize: 650
@@ -329,56 +328,56 @@ const pollingData = {
     {
       state: "New York", abbr: "NY-19", rating: "tossup",
       candidates: [
-        { name: "Josh Riley", party: "dem", pct: 46.8, trend: "flat" },
-        { name: "Marc Molinaro", party: "rep", pct: 48.1, trend: "up" }
+        { name: "Josh Riley", party: "dem", pct: 49.1, trend: "flat" },
+        { name: "Marc Molinaro", party: "rep", pct: 46.8, trend: "up" }
       ],
       pollster: "Siena College", date: "2026-02-10", sampleSize: 580
     },
     {
-      state: "Virginia", abbr: "VA-07", rating: "lean-d",
+      state: "Nebraska", abbr: "NE-02", rating: "tossup",
       candidates: [
-        { name: "Abigail Spanberger", party: "dem", pct: 51.3, trend: "up" },
-        { name: "Yesli Vega", party: "rep", pct: 43.9, trend: "down" }
+        { name: "Tony Vargas", party: "dem", pct: 47.5, trend: "up" },
+        { name: "Don Bacon", party: "rep", pct: 48.2, trend: "flat" }
       ],
-      pollster: "Roanoke College", date: "2026-02-11", sampleSize: 620
+      pollster: "Susquehanna", date: "2026-02-11", sampleSize: 620
     },
     {
       state: "Colorado", abbr: "CO-08", rating: "tossup",
       candidates: [
         { name: "Yadira Caraveo", party: "dem", pct: 47.6, trend: "up" },
-        { name: "Barbara Kirkmeyer", party: "rep", pct: 47.0, trend: "flat" }
+        { name: "Gabe Evans", party: "rep", pct: 47.0, trend: "flat" }
       ],
       pollster: "Keating Research", date: "2026-02-09", sampleSize: 590
     },
     {
-      state: "Michigan", abbr: "MI-10", rating: "lean-r",
+      state: "Michigan", abbr: "MI-07", rating: "tossup",
       candidates: [
-        { name: "Carl Marlinga", party: "dem", pct: 44.1, trend: "down" },
-        { name: "John James", party: "rep", pct: 50.8, trend: "up" }
+        { name: "Curtis Hertel", party: "dem", pct: 48.0, trend: "up" },
+        { name: "Tom Barrett", party: "rep", pct: 47.5, trend: "flat" }
       ],
       pollster: "EPIC-MRA", date: "2026-02-08", sampleSize: 540
     },
     {
-      state: "Oregon", abbr: "OR-05", rating: "lean-d",
+      state: "Washington", abbr: "WA-03", rating: "tossup",
       candidates: [
-        { name: "Jamie McLeod-Skinner", party: "dem", pct: 49.8, trend: "flat" },
-        { name: "Lori Chavez-DeRemer", party: "rep", pct: 45.4, trend: "up" }
+        { name: "Marie Gluesenkamp Perez", party: "dem", pct: 49.0, trend: "up" },
+        { name: "Joe Kent", party: "rep", pct: 46.8, trend: "down" }
       ],
-      pollster: "DHM Research", date: "2026-02-07", sampleSize: 610
+      pollster: "Elway Research", date: "2026-02-07", sampleSize: 610
     },
     {
-      state: "Kansas", abbr: "KS-03", rating: "tossup",
+      state: "Kansas", abbr: "KS-03", rating: "lean-d",
       candidates: [
-        { name: "Sharice Davids", party: "dem", pct: 48.9, trend: "up" },
-        { name: "Amanda Adkins", party: "rep", pct: 46.7, trend: "down" }
+        { name: "Sharice Davids", party: "dem", pct: 51.2, trend: "up" },
+        { name: "Prasanth Reddy", party: "rep", pct: 44.5, trend: "down" }
       ],
       pollster: "Fort Hays State", date: "2026-02-06", sampleSize: 530
     },
     {
-      state: "Pennsylvania", abbr: "PA-07", rating: "lean-d",
+      state: "Pennsylvania", abbr: "PA-07", rating: "tossup",
       candidates: [
-        { name: "Susan Wild", party: "dem", pct: 50.5, trend: "up" },
-        { name: "Lisa Scheller", party: "rep", pct: 44.3, trend: "flat" }
+        { name: "Susan Wild", party: "dem", pct: 47.8, trend: "up" },
+        { name: "Ryan Mackenzie", party: "rep", pct: 48.0, trend: "flat" }
       ],
       pollster: "Muhlenberg College", date: "2026-02-13", sampleSize: 680
     },
@@ -393,40 +392,40 @@ const pollingData = {
     {
       state: "New Jersey", abbr: "NJ-07", rating: "tossup",
       candidates: [
-        { name: "Tom Malinowski", party: "dem", pct: 47.3, trend: "flat" },
-        { name: "Tom Kean Jr.", party: "rep", pct: 48.0, trend: "up" }
+        { name: "Sue Altman", party: "dem", pct: 47.3, trend: "up" },
+        { name: "Tom Kean Jr.", party: "rep", pct: 48.0, trend: "flat" }
       ],
       pollster: "Monmouth University", date: "2026-02-14", sampleSize: 640
     },
     {
-      state: "Ohio", abbr: "OH-01", rating: "lean-r",
+      state: "Ohio", abbr: "OH-09", rating: "tossup",
       candidates: [
-        { name: "Greg Landsman", party: "dem", pct: 44.0, trend: "up" },
-        { name: "Steve Chabot", party: "rep", pct: 50.1, trend: "flat" }
+        { name: "Marcy Kaptur", party: "dem", pct: 47.5, trend: "down" },
+        { name: "Derek Merrin", party: "rep", pct: 48.0, trend: "up" }
       ],
       pollster: "Emerson College", date: "2026-02-04", sampleSize: 510
     },
     {
-      state: "Washington", abbr: "WA-03", rating: "solid-r",
+      state: "Alaska", abbr: "AK-AL", rating: "lean-r",
       candidates: [
-        { name: "Marie Perez", party: "dem", pct: 40.5, trend: "down" },
-        { name: "Joe Kent", party: "rep", pct: 54.2, trend: "up" }
+        { name: "Mary Peltola", party: "dem", pct: 45.0, trend: "down" },
+        { name: "Nick Begich III", party: "rep", pct: 49.5, trend: "up" }
       ],
-      pollster: "Elway Research", date: "2026-02-02", sampleSize: 490
+      pollster: "Alaska Survey Research", date: "2026-02-02", sampleSize: 490
     },
     {
       state: "Illinois", abbr: "IL-06", rating: "solid-d",
       candidates: [
         { name: "Sean Casten", party: "dem", pct: 55.3, trend: "up" },
-        { name: "Keith Pekau", party: "rep", pct: 38.7, trend: "down" }
+        { name: "Niki Conforti", party: "rep", pct: 38.7, trend: "down" }
       ],
       pollster: "Paul Simon Institute", date: "2026-02-03", sampleSize: 570
     },
     {
-      state: "North Carolina", abbr: "NC-13", rating: "tossup",
+      state: "North Carolina", abbr: "NC-01", rating: "tossup",
       candidates: [
-        { name: "Wiley Nickel", party: "dem", pct: 47.8, trend: "up" },
-        { name: "Bo Hines", party: "rep", pct: 47.5, trend: "flat" }
+        { name: "Don Davis", party: "dem", pct: 48.2, trend: "up" },
+        { name: "Laurie Buckhout", party: "rep", pct: 47.5, trend: "flat" }
       ],
       pollster: "PPP", date: "2026-02-11", sampleSize: 600
     }
@@ -435,130 +434,128 @@ const pollingData = {
 
 // News stories for each race (keyed by abbr)
 const raceNews = {
-  "AZ": [
-    { title: "Arizona Senate race tightens as Gallego edges ahead", source: "Arizona Republic", url: "https://www.azcentral.com" },
-    { title: "Kari Lake pivots strategy in closely watched Senate bid", source: "Politico", url: "https://www.politico.com" },
-    { title: "Latino voter turnout could decide Arizona Senate race", source: "NBC News", url: "https://www.nbcnews.com" }
-  ],
   "GA": [
-    { title: "Georgia Senate race heats up as Hogan builds lead", source: "Atlanta Journal-Constitution", url: "https://www.ajc.com" },
-    { title: "Ossoff faces headwinds in re-election campaign", source: "The Hill", url: "https://thehill.com" },
-    { title: "Suburban Atlanta voters key to Georgia Senate outcome", source: "CNN", url: "https://www.cnn.com" }
+    { title: "Ossoff faces tough re-election as Georgia shifts right", source: "Atlanta Journal-Constitution" },
+    { title: "Burt Jones enters Georgia Senate race with strong GOP backing", source: "Politico" },
+    { title: "Suburban Atlanta voters key to Georgia Senate 2026 outcome", source: "CNN" }
   ],
   "MI": [
-    { title: "Peters holds steady lead in Michigan Senate race", source: "Detroit Free Press", url: "https://www.freep.com" },
-    { title: "Auto industry policy dominates Michigan Senate debate", source: "Reuters", url: "https://www.reuters.com" },
-    { title: "Michigan poll shows Peters expanding advantage", source: "The Hill", url: "https://thehill.com" }
-  ],
-  "NV": [
-    { title: "Nevada Senate race remains a coin flip", source: "Las Vegas Review-Journal", url: "https://www.reviewjournal.com" },
-    { title: "Cortez Masto and Brown clash on immigration policy", source: "Politico", url: "https://www.politico.com" },
-    { title: "Housing costs emerge as top issue in Nevada Senate race", source: "AP News", url: "https://apnews.com" }
-  ],
-  "PA": [
-    { title: "Pennsylvania Senate race narrows to within margin of error", source: "Philadelphia Inquirer", url: "https://www.inquirer.com" },
-    { title: "Fetterman's voting record becomes campaign flashpoint", source: "CNN", url: "https://www.cnn.com" },
-    { title: "McCormick gains ground in crucial Pennsylvania contest", source: "Politico", url: "https://www.politico.com" }
-  ],
-  "WI": [
-    { title: "Baldwin builds comfortable lead in Wisconsin", source: "Milwaukee Journal Sentinel", url: "https://www.jsonline.com" },
-    { title: "Wisconsin Senate race: Hovde struggles to gain traction", source: "The Hill", url: "https://thehill.com" },
-    { title: "Rural vs. urban divide shapes Wisconsin Senate battle", source: "AP News", url: "https://apnews.com" }
-  ],
-  "OH": [
-    { title: "Ohio trends further toward Moreno in Senate race", source: "Cleveland Plain Dealer", url: "https://www.cleveland.com" },
-    { title: "Ryan faces uphill battle in increasingly red Ohio", source: "NBC News", url: "https://www.nbcnews.com" },
-    { title: "Manufacturing jobs top voter concerns in Ohio Senate race", source: "Reuters", url: "https://www.reuters.com" }
+    { title: "Peters holds steady lead in Michigan Senate re-election bid", source: "Detroit Free Press" },
+    { title: "Auto industry policy dominates Michigan 2026 Senate debate", source: "Reuters" },
+    { title: "Tudor Dixon launches Senate campaign after gubernatorial loss", source: "The Hill" }
   ],
   "NC": [
-    { title: "North Carolina Senate race tightening in final stretch", source: "Charlotte Observer", url: "https://www.charlotteobserver.com" },
-    { title: "Beasley edges ahead in latest NC polling", source: "Politico", url: "https://www.politico.com" },
-    { title: "Education policy splits NC Senate candidates", source: "WRAL", url: "https://www.wral.com" }
+    { title: "Jeff Jackson challenges Tillis in competitive NC Senate race", source: "Charlotte Observer" },
+    { title: "Tillis faces toughest re-election fight yet in 2026", source: "Politico" },
+    { title: "North Carolina Senate race emerges as top 2026 battleground", source: "WRAL" }
   ],
   "NH": [
-    { title: "Hassan cruises toward re-election in New Hampshire", source: "New Hampshire Union Leader", url: "https://www.unionleader.com" },
-    { title: "Bolduc campaign struggles with fundraising gap", source: "The Hill", url: "https://thehill.com" },
-    { title: "New Hampshire Senate race reflects broader GOP challenges", source: "CNN", url: "https://www.cnn.com" }
-  ],
-  "FL": [
-    { title: "Rick Scott extends lead in Florida Senate race", source: "Miami Herald", url: "https://www.miamiherald.com" },
-    { title: "Demings faces name recognition challenge statewide", source: "Politico", url: "https://www.politico.com" },
-    { title: "Florida's shifting demographics test Senate candidates", source: "NBC News", url: "https://www.nbcnews.com" }
-  ],
-  "TX": [
-    { title: "Cruz holds comfortable lead in Texas Senate race", source: "Texas Tribune", url: "https://www.texastribune.org" },
-    { title: "Allred focuses campaign on border communities", source: "Dallas Morning News", url: "https://www.dallasnews.com" },
-    { title: "Texas Senate race fundraising sets new records", source: "AP News", url: "https://apnews.com" }
-  ],
-  "CO": [
-    { title: "Bennet in strong position for Colorado re-election", source: "Denver Post", url: "https://www.denverpost.com" },
-    { title: "Colorado Senate race not competitive, analysts say", source: "Cook Political Report", url: "https://www.cookpolitical.com" }
+    { title: "Shaheen seeks fourth term as Sununu enters Senate race", source: "New Hampshire Union Leader" },
+    { title: "Sununu brings governor popularity to NH Senate bid", source: "The Hill" },
+    { title: "New Hampshire Senate race could decide chamber control", source: "CNN" }
   ],
   "ME": [
-    { title: "King maintains steady lead in Maine Senate race", source: "Portland Press Herald", url: "https://www.pressherald.com" },
-    { title: "LePage struggles to gain ground against King", source: "Bangor Daily News", url: "https://bangordailynews.com" }
+    { title: "Collins faces serious 2026 challenge from Jared Golden", source: "Portland Press Herald" },
+    { title: "Maine Senate race rated toss-up as Golden gains momentum", source: "Bangor Daily News" },
+    { title: "Ranked-choice voting adds uncertainty to Maine Senate contest", source: "AP News" }
+  ],
+  "CO": [
+    { title: "Hickenlooper coasts toward re-election in Colorado", source: "Denver Post" },
+    { title: "Colorado Senate race not competitive in 2026, analysts say", source: "Cook Political Report" }
   ],
   "IA": [
-    { title: "Grassley remains dominant in Iowa Senate race", source: "Des Moines Register", url: "https://www.desmoinesregister.com" },
-    { title: "Iowa Senate race stays firmly in GOP column", source: "The Hill", url: "https://thehill.com" }
+    { title: "Rob Sand mounts strong challenge to Ernst in Iowa Senate race", source: "Des Moines Register" },
+    { title: "Ernst faces competitive 2026 re-election as Iowa tightens", source: "The Hill" },
+    { title: "Iowa Senate race moves to lean-R as Sand closes gap", source: "Politico" }
+  ],
+  "TX": [
+    { title: "Cornyn looks safe in Texas but Democrats eye long game", source: "Texas Tribune" },
+    { title: "Castro brings name recognition to Texas Senate bid", source: "Dallas Morning News" },
+    { title: "Texas Senate 2026 race fundraising heats up early", source: "AP News" }
+  ],
+  "VA": [
+    { title: "Warner vs Youngkin shapes up as marquee 2026 Senate race", source: "Richmond Times-Dispatch" },
+    { title: "Youngkin trades governor's mansion for Senate campaign", source: "Politico" },
+    { title: "Virginia Senate race tightens as Youngkin enters", source: "The Hill" }
+  ],
+  "OR": [
+    { title: "Merkley expected to cruise to re-election in Oregon", source: "Oregonian" },
+    { title: "Oregon Senate seat stays safely Democratic in 2026", source: "Cook Political Report" }
+  ],
+  "MN": [
+    { title: "Tina Smith builds steady lead in Minnesota Senate race", source: "Star Tribune" },
+    { title: "Minnesota Senate race leans Democratic heading into 2026", source: "The Hill" }
+  ],
+  "MT": [
+    { title: "Tranel challenges Daines in competitive Montana Senate race", source: "Missoulian" },
+    { title: "Montana Senate race emerges as surprise 2026 battleground", source: "Politico" },
+    { title: "Daines leans on rural support as Tranel gains in cities", source: "AP News" }
+  ],
+  "SC": [
+    { title: "Graham faces token opposition in deep-red South Carolina", source: "The State" },
+    { title: "South Carolina Senate race remains safely Republican", source: "Cook Political Report" }
+  ],
+  "IL": [
+    { title: "Durbin seeks re-election in safely Democratic Illinois", source: "Chicago Tribune" },
+    { title: "Illinois Senate race stays solidly in Democratic column", source: "The Hill" }
   ],
   "CA-45": [
-    { title: "Orange County House race emerges as top battleground", source: "Los Angeles Times", url: "https://www.latimes.com" },
-    { title: "Chen gains momentum in CA-45 against Steel", source: "Politico", url: "https://www.politico.com" },
-    { title: "Asian American voters could tip CA-45 outcome", source: "NBC News", url: "https://www.nbcnews.com" }
+    { title: "Tran defends Orange County seat in 2026 rematch with Steel", source: "Los Angeles Times" },
+    { title: "CA-45 remains top battleground as Steel seeks comeback", source: "Politico" },
+    { title: "Asian American voters again decisive in CA-45 contest", source: "NBC News" }
   ],
   "NY-19": [
-    { title: "Molinaro holds narrow lead in NY-19 rematch", source: "Times Union", url: "https://www.timesunion.com" },
-    { title: "Hudson Valley House race one of nation's closest", source: "Politico", url: "https://www.politico.com" }
+    { title: "Riley defends NY-19 seat against Molinaro rematch bid", source: "Times Union" },
+    { title: "Hudson Valley House race one of nation's closest in 2026", source: "Politico" }
   ],
-  "VA-07": [
-    { title: "Spanberger builds lead in Virginia's 7th District", source: "Richmond Times-Dispatch", url: "https://richmond.com" },
-    { title: "VA-07: Suburban shift continues to favor Democrats", source: "The Hill", url: "https://thehill.com" }
+  "NE-02": [
+    { title: "Bacon faces toughest re-election yet in Omaha district", source: "Omaha World-Herald" },
+    { title: "NE-02: Vargas mounts second challenge in swing district", source: "The Hill" }
   ],
   "CO-08": [
-    { title: "Colorado's newest district remains a toss-up", source: "Denver Post", url: "https://www.denverpost.com" },
-    { title: "Caraveo edges ahead in CO-08 race", source: "Politico", url: "https://www.politico.com" }
+    { title: "Caraveo defends Colorado's newest district in 2026", source: "Denver Post" },
+    { title: "CO-08 remains a toss-up as both parties invest heavily", source: "Politico" }
   ],
-  "MI-10": [
-    { title: "John James leads in Michigan's 10th District", source: "Detroit News", url: "https://www.detroitnews.com" },
-    { title: "MI-10: Macomb County voters split on economy", source: "CNN", url: "https://www.cnn.com" }
-  ],
-  "OR-05": [
-    { title: "McLeod-Skinner holds edge in Oregon's 5th", source: "Oregonian", url: "https://www.oregonlive.com" },
-    { title: "Oregon redistricting reshapes competitive House race", source: "AP News", url: "https://apnews.com" }
-  ],
-  "KS-03": [
-    { title: "Davids favored in Kansas City-area House race", source: "Kansas City Star", url: "https://www.kansascity.com" },
-    { title: "KS-03: Suburban trends boost Davids re-election bid", source: "The Hill", url: "https://thehill.com" }
-  ],
-  "PA-07": [
-    { title: "Wild leads comfortably in Lehigh Valley district", source: "Morning Call", url: "https://www.mcall.com" },
-    { title: "PA-07: Democrats feel confident in House race", source: "Politico", url: "https://www.politico.com" }
-  ],
-  "TX-34": [
-    { title: "Flores looks to hold TX-34 for Republicans", source: "Texas Tribune", url: "https://www.texastribune.org" },
-    { title: "South Texas district remains competitive battleground", source: "NBC News", url: "https://www.nbcnews.com" }
-  ],
-  "NJ-07": [
-    { title: "Kean edges Malinowski in NJ-07 rematch", source: "NJ.com", url: "https://www.nj.com" },
-    { title: "New Jersey House race among nation's most expensive", source: "Politico", url: "https://www.politico.com" }
-  ],
-  "OH-01": [
-    { title: "Chabot holds lead in Cincinnati-area House race", source: "Cincinnati Enquirer", url: "https://www.cincinnati.com" },
-    { title: "OH-01: Landsman closes gap in competitive district", source: "The Hill", url: "https://thehill.com" }
+  "MI-07": [
+    { title: "Hertel defends swing Michigan seat against Barrett rematch", source: "Detroit Free Press" },
+    { title: "MI-07: Lansing-area district among nation's most competitive", source: "CNN" }
   ],
   "WA-03": [
-    { title: "Kent holds solid lead in Washington's 3rd District", source: "Columbian", url: "https://www.columbian.com" },
-    { title: "WA-03 stays in Republican column, polls show", source: "AP News", url: "https://apnews.com" }
+    { title: "Gluesenkamp Perez seeks to hold rural Washington seat", source: "Columbian" },
+    { title: "WA-03: Blue-collar Democrat defies partisan trends again", source: "AP News" }
+  ],
+  "KS-03": [
+    { title: "Davids favored again in Kansas City-area House race", source: "Kansas City Star" },
+    { title: "KS-03: Suburban trends continue to boost Davids", source: "The Hill" }
+  ],
+  "PA-07": [
+    { title: "Lehigh Valley district becomes 2026 House battleground", source: "Morning Call" },
+    { title: "PA-07 flips as Republicans target Lehigh Valley", source: "Politico" }
+  ],
+  "TX-34": [
+    { title: "Flores looks to hold TX-34 in South Texas for GOP", source: "Texas Tribune" },
+    { title: "South Texas district remains competitive battleground in 2026", source: "NBC News" }
+  ],
+  "NJ-07": [
+    { title: "Kean faces strong Democratic challenge in NJ-07", source: "NJ.com" },
+    { title: "New Jersey House race among nation's most expensive in 2026", source: "Politico" }
+  ],
+  "OH-09": [
+    { title: "Kaptur fights to hold Toledo-area seat in tough cycle", source: "Toledo Blade" },
+    { title: "OH-09: Longest-serving woman in House faces 2026 challenge", source: "The Hill" }
+  ],
+  "AK-AL": [
+    { title: "Begich looks to unseat Peltola in Alaska at-large rematch", source: "Anchorage Daily News" },
+    { title: "Alaska House race tests ranked-choice voting again in 2026", source: "AP News" }
   ],
   "IL-06": [
-    { title: "Casten cruises in suburban Chicago House race", source: "Chicago Tribune", url: "https://www.chicagotribune.com" },
-    { title: "IL-06: Democrats maintain strong hold on DuPage County", source: "Daily Herald", url: "https://www.dailyherald.com" }
+    { title: "Casten cruises in suburban Chicago House race", source: "Chicago Tribune" },
+    { title: "IL-06: Democrats maintain strong hold on DuPage County", source: "Daily Herald" }
   ],
-  "NC-13": [
-    { title: "NC-13 emerges as one of nation's tightest House races", source: "Charlotte Observer", url: "https://www.charlotteobserver.com" },
-    { title: "Nickel and Hines battle for Research Triangle voters", source: "WRAL", url: "https://www.wral.com" },
-    { title: "North Carolina redistricting creates new battleground", source: "Politico", url: "https://www.politico.com" }
+  "NC-01": [
+    { title: "Don Davis defends eastern NC seat in competitive rematch", source: "Charlotte Observer" },
+    { title: "NC-01 emerges as key 2026 House battleground", source: "WRAL" },
+    { title: "Rural eastern North Carolina district remains toss-up", source: "Politico" }
   ]
 };
 
