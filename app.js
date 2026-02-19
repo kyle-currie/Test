@@ -177,12 +177,12 @@ const pollingTrends = {
     { date: "2026-01-20", dem: 47.6, rep: 47.8, pollster: "Quinnipiac" },
     { date: "2026-02-04", dem: 47.5, rep: 48.0, pollster: "Emerson College" }
   ],
-  "AK-AL": [
-    { date: "2025-11-10", dem: 47.0, rep: 47.5, pollster: "Alaska Survey Research" },
-    { date: "2025-12-06", dem: 46.5, rep: 48.0, pollster: "SurveyUSA" },
-    { date: "2026-01-08", dem: 46.0, rep: 48.5, pollster: "Alaska Survey Research" },
-    { date: "2026-01-22", dem: 45.5, rep: 49.0, pollster: "Emerson College" },
-    { date: "2026-02-02", dem: 45.0, rep: 49.5, pollster: "Alaska Survey Research" }
+  "AZ-06": [
+    { date: "2025-11-10", dem: 46.0, rep: 48.5, pollster: "OH Predictive Insights" },
+    { date: "2025-12-06", dem: 46.5, rep: 48.2, pollster: "Emerson College" },
+    { date: "2026-01-08", dem: 47.0, rep: 48.0, pollster: "OH Predictive Insights" },
+    { date: "2026-01-22", dem: 47.2, rep: 48.0, pollster: "Data Orbital" },
+    { date: "2026-02-02", dem: 47.5, rep: 48.2, pollster: "OH Predictive Insights" }
   ],
   "IL-06": [
     { date: "2025-11-14", dem: 53.5, rep: 40.5, pollster: "Paul Simon Institute" },
@@ -212,33 +212,33 @@ const pollingData = {
       pollster: "Quinnipiac", date: "2026-02-08", sampleSize: 1102
     },
     {
-      state: "Michigan", abbr: "MI", rating: "lean-d",
+      state: "Michigan", abbr: "MI", rating: "tossup",
       candidates: [
-        { name: "Gary Peters", party: "dem", pct: 50.1, trend: "up" },
-        { name: "Tudor Dixon", party: "rep", pct: 44.7, trend: "flat" }
+        { name: "Haley Stevens", party: "dem", pct: 47.8, trend: "up" },
+        { name: "Mike Rogers", party: "rep", pct: 47.2, trend: "flat" }
       ],
       pollster: "EPIC-MRA", date: "2026-02-12", sampleSize: 980
     },
     {
       state: "North Carolina", abbr: "NC", rating: "tossup",
       candidates: [
-        { name: "Jeff Jackson", party: "dem", pct: 47.6, trend: "up" },
-        { name: "Thom Tillis", party: "rep", pct: 47.3, trend: "flat" }
+        { name: "Roy Cooper", party: "dem", pct: 48.1, trend: "up" },
+        { name: "Michael Whatley", party: "rep", pct: 46.8, trend: "flat" }
       ],
       pollster: "PPP", date: "2026-02-14", sampleSize: 890
     },
     {
       state: "New Hampshire", abbr: "NH", rating: "lean-d",
       candidates: [
-        { name: "Jeanne Shaheen", party: "dem", pct: 51.4, trend: "up" },
-        { name: "Chris Sununu", party: "rep", pct: 42.8, trend: "down" }
+        { name: "Chris Pappas", party: "dem", pct: 50.0, trend: "up" },
+        { name: "John Sununu", party: "rep", pct: 45.0, trend: "flat" }
       ],
       pollster: "UNH Survey Center", date: "2026-02-06", sampleSize: 975
     },
     {
       state: "Maine", abbr: "ME", rating: "tossup",
       candidates: [
-        { name: "Jared Golden", party: "dem", pct: 48.8, trend: "up" },
+        { name: "Janet Mills", party: "dem", pct: 48.8, trend: "up" },
         { name: "Susan Collins", party: "rep", pct: 47.0, trend: "down" }
       ],
       pollster: "Critical Insights", date: "2026-02-01", sampleSize: 780
@@ -271,7 +271,7 @@ const pollingData = {
       state: "Virginia", abbr: "VA", rating: "lean-d",
       candidates: [
         { name: "Mark Warner", party: "dem", pct: 49.0, trend: "down" },
-        { name: "Glenn Youngkin", party: "rep", pct: 45.5, trend: "up" }
+        { name: "Hung Cao", party: "rep", pct: 45.5, trend: "up" }
       ],
       pollster: "Roanoke College", date: "2026-02-11", sampleSize: 1080
     },
@@ -286,8 +286,8 @@ const pollingData = {
     {
       state: "Minnesota", abbr: "MN", rating: "lean-d",
       candidates: [
-        { name: "Tina Smith", party: "dem", pct: 51.5, trend: "up" },
-        { name: "Jim Schultz", party: "rep", pct: 42.5, trend: "down" }
+        { name: "Peggy Flanagan", party: "dem", pct: 50.5, trend: "up" },
+        { name: "Jim Schultz", party: "rep", pct: 43.5, trend: "down" }
       ],
       pollster: "Star Tribune/MPR", date: "2026-02-06", sampleSize: 1020
     },
@@ -310,8 +310,8 @@ const pollingData = {
     {
       state: "Illinois", abbr: "IL", rating: "solid-d",
       candidates: [
-        { name: "Dick Durbin", party: "dem", pct: 56.5, trend: "up" },
-        { name: "Peggy Hubbard", party: "rep", pct: 37.5, trend: "down" }
+        { name: "Raja Krishnamoorthi", party: "dem", pct: 55.0, trend: "up" },
+        { name: "Peggy Hubbard", party: "rep", pct: 38.5, trend: "down" }
       ],
       pollster: "Paul Simon Institute", date: "2026-02-08", sampleSize: 1100
     }
@@ -376,7 +376,7 @@ const pollingData = {
     {
       state: "Pennsylvania", abbr: "PA-07", rating: "tossup",
       candidates: [
-        { name: "Susan Wild", party: "dem", pct: 47.8, trend: "up" },
+        { name: "Lamont McClure", party: "dem", pct: 47.8, trend: "up" },
         { name: "Ryan Mackenzie", party: "rep", pct: 48.0, trend: "flat" }
       ],
       pollster: "Muhlenberg College", date: "2026-02-13", sampleSize: 680
@@ -406,12 +406,12 @@ const pollingData = {
       pollster: "Emerson College", date: "2026-02-04", sampleSize: 510
     },
     {
-      state: "Alaska", abbr: "AK-AL", rating: "lean-r",
+      state: "Arizona", abbr: "AZ-06", rating: "tossup",
       candidates: [
-        { name: "Mary Peltola", party: "dem", pct: 45.0, trend: "down" },
-        { name: "Nick Begich III", party: "rep", pct: 49.5, trend: "up" }
+        { name: "Kirsten Engel", party: "dem", pct: 47.5, trend: "up" },
+        { name: "Juan Ciscomani", party: "rep", pct: 48.2, trend: "flat" }
       ],
-      pollster: "Alaska Survey Research", date: "2026-02-02", sampleSize: 490
+      pollster: "OH Predictive Insights", date: "2026-02-02", sampleSize: 620
     },
     {
       state: "Illinois", abbr: "IL-06", rating: "solid-d",
@@ -440,24 +440,24 @@ const raceNews = {
     { title: "Suburban Atlanta voters key to Georgia Senate 2026 outcome", source: "CNN" }
   ],
   "MI": [
-    { title: "Peters holds steady lead in Michigan Senate re-election bid", source: "Detroit Free Press" },
-    { title: "Auto industry policy dominates Michigan 2026 Senate debate", source: "Reuters" },
-    { title: "Tudor Dixon launches Senate campaign after gubernatorial loss", source: "The Hill" }
+    { title: "Stevens and McMorrow battle for Democratic Senate nomination in Michigan", source: "Detroit Free Press" },
+    { title: "Mike Rogers enters Michigan Senate race with Trump endorsement", source: "Reuters" },
+    { title: "Open Michigan Senate seat emerges as top 2026 battleground", source: "The Hill" }
   ],
   "NC": [
-    { title: "Jeff Jackson challenges Tillis in competitive NC Senate race", source: "Charlotte Observer" },
-    { title: "Tillis faces toughest re-election fight yet in 2026", source: "Politico" },
-    { title: "North Carolina Senate race emerges as top 2026 battleground", source: "WRAL" }
+    { title: "Roy Cooper jumps into open North Carolina Senate race after Tillis retirement", source: "Charlotte Observer" },
+    { title: "Michael Whatley launches Senate bid as former RNC chair", source: "Politico" },
+    { title: "North Carolina open Senate seat rated tossup in 2026", source: "WRAL" }
   ],
   "NH": [
-    { title: "Shaheen seeks fourth term as Sununu enters Senate race", source: "New Hampshire Union Leader" },
-    { title: "Sununu brings governor popularity to NH Senate bid", source: "The Hill" },
-    { title: "New Hampshire Senate race could decide chamber control", source: "CNN" }
+    { title: "Pappas leads Democratic field after Shaheen retirement announcement", source: "New Hampshire Union Leader" },
+    { title: "Former Senator John Sununu enters NH Senate race to reclaim seat", source: "The Hill" },
+    { title: "New Hampshire open Senate seat draws competitive field for 2026", source: "CNN" }
   ],
   "ME": [
-    { title: "Collins faces serious 2026 challenge from Jared Golden", source: "Portland Press Herald" },
-    { title: "Maine Senate race rated toss-up as Golden gains momentum", source: "Bangor Daily News" },
-    { title: "Ranked-choice voting adds uncertainty to Maine Senate contest", source: "AP News" }
+    { title: "Governor Janet Mills enters Democratic primary to challenge Collins", source: "Portland Press Herald" },
+    { title: "Maine Senate race rated toss-up as Mills enters the field", source: "Bangor Daily News" },
+    { title: "Collins seeks sixth term in most competitive race since 2008", source: "AP News" }
   ],
   "CO": [
     { title: "Hickenlooper coasts toward re-election in Colorado", source: "Denver Post" },
@@ -474,17 +474,17 @@ const raceNews = {
     { title: "Texas Senate 2026 race fundraising heats up early", source: "AP News" }
   ],
   "VA": [
-    { title: "Warner vs Youngkin shapes up as marquee 2026 Senate race", source: "Richmond Times-Dispatch" },
-    { title: "Youngkin trades governor's mansion for Senate campaign", source: "Politico" },
-    { title: "Virginia Senate race tightens as Youngkin enters", source: "The Hill" }
+    { title: "Warner seeks re-election with strong favorability in Virginia", source: "Richmond Times-Dispatch" },
+    { title: "Hung Cao makes second run for Virginia Senate seat in 2026", source: "Politico" },
+    { title: "Virginia Senate race leans toward Democrats as Warner leads", source: "The Hill" }
   ],
   "OR": [
     { title: "Merkley expected to cruise to re-election in Oregon", source: "Oregonian" },
     { title: "Oregon Senate seat stays safely Democratic in 2026", source: "Cook Political Report" }
   ],
   "MN": [
-    { title: "Tina Smith builds steady lead in Minnesota Senate race", source: "Star Tribune" },
-    { title: "Minnesota Senate race leans Democratic heading into 2026", source: "The Hill" }
+    { title: "Peggy Flanagan emerges as frontrunner for open Minnesota Senate seat", source: "Star Tribune" },
+    { title: "Minnesota open Senate seat expected to stay Democratic in 2026", source: "The Hill" }
   ],
   "MT": [
     { title: "Tranel challenges Daines in competitive Montana Senate race", source: "Missoulian" },
@@ -496,8 +496,8 @@ const raceNews = {
     { title: "South Carolina Senate race remains safely Republican", source: "Cook Political Report" }
   ],
   "IL": [
-    { title: "Durbin seeks re-election in safely Democratic Illinois", source: "Chicago Tribune" },
-    { title: "Illinois Senate race stays solidly in Democratic column", source: "The Hill" }
+    { title: "Krishnamoorthi leads crowded Democratic primary after Durbin retirement", source: "Chicago Tribune" },
+    { title: "Illinois open Senate seat stays solidly in Democratic column for 2026", source: "The Hill" }
   ],
   "CA-45": [
     { title: "Tran defends Orange County seat in 2026 rematch with Steel", source: "Los Angeles Times" },
@@ -513,8 +513,8 @@ const raceNews = {
     { title: "NE-02: Vargas mounts second challenge in swing district", source: "The Hill" }
   ],
   "CO-08": [
-    { title: "Caraveo defends Colorado's newest district in 2026", source: "Denver Post" },
-    { title: "CO-08 remains a toss-up as both parties invest heavily", source: "Politico" }
+    { title: "Democrats target Evans in Colorado's competitive 8th District", source: "Denver Post" },
+    { title: "CO-08 remains a toss-up as both parties invest heavily in 2026", source: "Politico" }
   ],
   "MI-07": [
     { title: "Hertel defends swing Michigan seat against Barrett rematch", source: "Detroit Free Press" },
@@ -529,8 +529,8 @@ const raceNews = {
     { title: "KS-03: Suburban trends continue to boost Davids", source: "The Hill" }
   ],
   "PA-07": [
-    { title: "Lehigh Valley district becomes 2026 House battleground", source: "Morning Call" },
-    { title: "PA-07 flips as Republicans target Lehigh Valley", source: "Politico" }
+    { title: "Crowded Democratic primary forms to challenge freshman Rep. Mackenzie", source: "Morning Call" },
+    { title: "PA-07 toss-up: Democrats aim to reclaim Lehigh Valley seat in 2026", source: "Politico" }
   ],
   "TX-34": [
     { title: "Flores looks to hold TX-34 in South Texas for GOP", source: "Texas Tribune" },
@@ -544,9 +544,9 @@ const raceNews = {
     { title: "Kaptur fights to hold Toledo-area seat in tough cycle", source: "Toledo Blade" },
     { title: "OH-09: Longest-serving woman in House faces 2026 challenge", source: "The Hill" }
   ],
-  "AK-AL": [
-    { title: "Begich looks to unseat Peltola in Alaska at-large rematch", source: "Anchorage Daily News" },
-    { title: "Alaska House race tests ranked-choice voting again in 2026", source: "AP News" }
+  "AZ-06": [
+    { title: "Ciscomani faces tough re-election in competitive southern Arizona district", source: "Arizona Republic" },
+    { title: "AZ-06 rated toss-up as Democrats target Ciscomani in 2026 midterms", source: "Politico" }
   ],
   "IL-06": [
     { title: "Casten cruises in suburban Chicago House race", source: "Chicago Tribune" },
@@ -582,7 +582,7 @@ async function fetchNews(query) {
   }
 
   const json = await res.json();
-  const cutoff = new Date("2025-06-01").getTime();
+  const cutoff = new Date("2025-11-01").getTime();
   const articles = (json.news || [])
     .filter(a => !a.published || new Date(a.published).getTime() >= cutoff)
     .map(a => ({
