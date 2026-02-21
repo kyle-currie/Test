@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bill Tracker</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header>
+    <div class="header-inner">
+      <h1>Bill Tracker</h1>
+      <button id="btn-add" class="btn btn-primary">+ Add Bill</button>
+    </div>
+  </header>
+
+  <!-- Summary Cards -->
+  <main>
+    <section class="summary">
+      <div class="summary-card">
+        <span class="label">Total Owed</span>
+        <span class="value" id="total-owed">$0.00</span>
+      </div>
+      <div class="summary-card warn">
+        <span class="label">Due This Week</span>
+        <span class="value" id="due-week">$0.00</span>
+      </div>
+      <div class="summary-card ok">
+        <span class="label">On Autopay</span>
+        <span class="value" id="autopay-count">0</span>
+      </div>
+      <div class="summary-card neutral">
+        <span class="label">Total Bills</span>
+        <span class="value" id="total-bills">0</span>
+      </div>
+    </section>
+
+    <!-- Filters -->
+    <section class="filters">
+      <input type="text" id="search" placeholder="Search bills…" />
+      <select id="filter-category">
+        <option value="">All Categories</option>
+        <option value="Credit Card">Credit Card</option>
+        <option value="Utility">Utility</option>
+        <option value="Subscription">Subscription</option>
+        <option value="Loan">Loan</option>
+        <option value="Insurance">Insurance</option>
+        <option value="Rent/Mortgage">Rent/Mortgage</option>
+        <option value="Other">Other</option>
+      </select>
+      <select id="filter-status">
+        <option value="">All Statuses</option>
+        <option value="unpaid">Unpaid</option>
+        <option value="paid">Paid</option>
+      </select>
+    </section>
+
+    <!-- Bills Table -->
+    <section class="bills-section">
+      <table id="bills-table">
+        <thead>
+          <tr>
+            <th>Bill Name</th>
+            <th>Category</th>
+            <th>Amount Due</th>
+            <th>Due Date</th>
+            <th>Autopay</th>
+            <th>Status</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="bills-body">
+          <!-- Rows injected by JS -->
+        </tbody>
+      </table>
+      <p id="empty-state" class="empty-state hidden">No bills yet. Click <strong>+ Add Bill</strong> to get started.</p>
+    </section>
+  </main>
+
+  <!-- Add / Edit Modal -->
+  <div id="modal-overlay" class="modal-overlay hidden">
+    <div class="modal">
+      <h2 id="modal-title">Add Bill</h2>
+      <form id="bill-form">
+        <input type="hidden" id="bill-id" />
+
+        <div class="form-group">
+          <label for="bill-name">Bill Name *</label>
+          <input type="text" id="bill-name" placeholder="e.g. Visa Platinum" required />
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="bill-category">Category</label>
+            <select id="bill-category">
+              <option value="Credit Card">Credit Card</option>
+              <option value="Utility">Utility</option>
+              <option value="Subscription">Subscription</option>
+              <option value="Loan">Loan</option>
+              <option value="Insurance">Insurance</option>
+              <option value="Rent/Mortgage">Rent/Mortgage</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="bill-amount">Amount Due *</label>
+            <input type="number" id="bill-amount" placeholder="0.00" step="0.01" min="0" required />
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="bill-due-date">Due Date *</label>
+            <input type="date" id="bill-due-date" required />
+          </div>
+          <div class="form-group autopay-group">
+            <label for="bill-autopay">Autopay</label>
+            <label class="toggle">
+              <input type="checkbox" id="bill-autopay" />
+              <span class="slider"></span>
+            </label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="bill-notes">Notes</label>
+          <textarea id="bill-notes" rows="2" placeholder="Account number, website, etc."></textarea>
+        </div>
+
+        <div class="modal-actions">
+          <button type="button" class="btn btn-secondary" id="btn-cancel">Cancel</button>
+          <button type="submit" class="btn btn-primary" id="btn-save">Save Bill</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Payment History Modal -->
+  <div id="history-overlay" class="modal-overlay hidden">
+    <div class="modal">
+      <h2>Payment History — <span id="history-bill-name"></span></h2>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="pay-amount">Amount Paid</label>
+          <input type="number" id="pay-amount" placeholder="0.00" step="0.01" min="0" />
+        </div>
+        <div class="form-group">
+          <label for="pay-date">Date</label>
+          <input type="date" id="pay-date" />
+        </div>
+      </div>
+      <button class="btn btn-primary" id="btn-log-payment">Log Payment</button>
+
+      <table id="history-table" style="margin-top:1.25rem;">
+        <thead>
+          <tr><th>Date</th><th>Amount</th></tr>
+        </thead>
+        <tbody id="history-body"></tbody>
+      </table>
+      <p id="history-empty" class="empty-state hidden">No payments logged yet.</p>
+
+      <div class="modal-actions" style="margin-top:1rem;">
+        <button class="btn btn-secondary" id="btn-close-history">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
